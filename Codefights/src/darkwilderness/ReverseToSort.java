@@ -23,7 +23,7 @@ public class ReverseToSort {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(reverseToSort(new int[] { -100, 4, 10, 4, 2 }));
+		System.out.println(reverseToSort(new int[] { 2, 3, 2, 4}));
 	}
 
 }
