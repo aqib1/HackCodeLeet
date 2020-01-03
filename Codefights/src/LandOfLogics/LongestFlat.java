@@ -1,13 +1,14 @@
 package LandOfLogics;
 
+import java.util.stream.Stream;
+
 public class LongestFlat {
 
 	static String longestWord(String text) {
 		int max = Integer.MIN_VALUE;
-		String[] values = text.split("[\\s@&.?$+-]+");
+		String[] values = text.split("\\W+");
 		String max_value = "";
 		for (String val : values) {
-			val = val.replaceAll("[^a-zA-Z]+", "");
 			if (max < val.length()) {
 				max = val.length();
 				max_value = val;
@@ -15,9 +16,13 @@ public class LongestFlat {
 		}
 		return max_value;
 	}
-
+	
+	static String longestWordWithStreams(String text) {
+		return Stream.of(text.split("\\W+")).max((x,y) -> x.length() - y.length()).get();
+	}
+	
 	public static void main(String[] args) {
-		System.out.println(longestWord("Ready[[[ steady go!"));
+		System.out.println(longestWordWithStreams("Ready[[[ steady go!"));
 	}
 
 }
