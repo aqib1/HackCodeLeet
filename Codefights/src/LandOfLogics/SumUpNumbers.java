@@ -1,6 +1,8 @@
 package LandOfLogics;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SumUpNumbers {
 
@@ -21,12 +23,22 @@ public class SumUpNumbers {
 //			sum += Integer.parseInt(number);
 //		return sum;
 //	}
-	
+
+//	static int sumUpNumbers(String inputString) {
+//		return Arrays.stream(inputString.split("\\D+"))
+//				.filter(x-> !x.isEmpty())
+//				.mapToInt(Integer::new).sum();
+//	}
+
 	static int sumUpNumbers(String inputString) {
-		return Arrays.stream(inputString.split("\\D+"))
-				.filter(x-> !x.isEmpty())
-				.mapToInt(Integer::new).sum();
+		int sum = 0;
+		Matcher matcher = Pattern.compile("\\d+").matcher(inputString);
+		while (matcher.find()) {
+			sum += Integer.parseInt(matcher.group(0));
+		}
+		return sum;
 	}
+
 	public static void main(String[] args) {
 		System.out.println(sumUpNumbers("2 apples, 12 oranges"));
 	}
