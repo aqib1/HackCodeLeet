@@ -17,7 +17,6 @@ public class PhoneCall {
 	}
 
 	public static void main(String[] args) {
-//		System.out.println(4 / 1);
 		System.out.println(phoneCall(2, 2, 1, 2));
 	}
 
