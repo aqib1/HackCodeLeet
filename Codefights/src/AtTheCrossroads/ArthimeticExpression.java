@@ -7,6 +7,6 @@ public class ArthimeticExpression {
 	}
 
 	public static void main(String[] args) {
-
+		System.out.println(arithmeticExpression(10, 2, 20));
 	}
 }
