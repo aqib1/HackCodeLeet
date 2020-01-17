@@ -5,8 +5,6 @@ public class FindTheDifferentRightMostBit {
 		return (n^=m) & -n;
 	}
 	public static void main(String[] args) {
-		
-
 	}
 
 }
