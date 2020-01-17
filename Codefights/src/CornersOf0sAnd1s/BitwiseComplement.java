@@ -13,6 +13,8 @@ public class BitwiseComplement {
 //		System.out.println(value << 1);
 		System.out.println(Integer.toBinaryString(value << 2));
 		System.out.println(value << 2);
+		System.out.println(0b0110);
+		System.out.println(Integer.toBinaryString(-6));
 
 	}
 
