@@ -2,7 +2,7 @@ package listForestEdge;
 
 import java.util.Arrays;
 
-public class MainClass {
+public class ArrayFill {
 	static int[] createArray(int size) {
 		int []arr = new int[size];
 		Arrays.fill(arr, 1);
