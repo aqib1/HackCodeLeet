@@ -21,6 +21,27 @@ public class SquareDigitsSequence {
 		} while (!data.contains(val));
 		return count;
 	}
+	
+	static int squareDigitsSequenceFast(int a0) {
+	    int count=1,b=a0;
+        ArrayList<Integer> arr = new ArrayList<>();
+        arr.add(a0);
+        while(true){
+            int c=0;count++;
+            while(b>0){
+                c+=(b%10)*(b%10);  
+                b/=10;
+            }
+            if(arr.contains(c)){
+                break;
+            }
+            else{
+                arr.add(c);
+                b=c;
+            }
+        }
+        return count;
+	}
 
 	public static void main(String[] args) {
 		System.out.println(squareDigitsSequence(16));
