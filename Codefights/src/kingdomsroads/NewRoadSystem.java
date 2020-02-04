@@ -1,7 +1,5 @@
 package kingdomsroads;
 
-import java.util.Arrays;
-
 public class NewRoadSystem {
 
 	static boolean newRoadSystem(boolean[][] roadRegister) {
