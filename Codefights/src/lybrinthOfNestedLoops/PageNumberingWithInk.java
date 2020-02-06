@@ -3,21 +3,22 @@ package lybrinthOfNestedLoops;
 public class PageNumberingWithInk {
 
 	static int pagesNumberingWithInk(int current, int numberOfDigits) {
-		String curr = current + "";
-		String result = curr;
-		do {
-			Integer val = current + 1;
-			if ((curr + val + "").length() > numberOfDigits)
+		String currVal = String.valueOf(current);
+		int count = currVal.length();
+		while (true) {
+			if (count + currVal.length() > numberOfDigits) {
 				break;
-			result += "," + val;
-			curr += val + "";
-			current = val;
-		} while (curr.length() < numberOfDigits);
-		return Integer.parseInt(result.split(",")[result.split(",").length - 1]);
+			}
+			current++;
+			currVal = String.valueOf(current);
+			count += currVal.length();
+		}
+
+		return current;
 	}
 
 	public static void main(String[] args) {
-		System.out.println(pagesNumberingWithInk(21, 5));
+		System.out.println(pagesNumberingWithInk(1, 5));
 
 	}
 
