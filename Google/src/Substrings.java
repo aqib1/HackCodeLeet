@@ -18,25 +18,28 @@ public class Substrings {
 			}
 		return sub;
 	}
-	//t stri -> tist
+
+	// t stri -> tist
 	public static boolean containsAllCharacters(String v1, String v2) {
 		StringBuilder sb = new StringBuilder(v2);
-		for(char c : v1.toCharArray()) {
+		for (char c : v1.toCharArray()) {
 			int index = sb.indexOf(Character.toString(c));
-			if(index != -1)
+			if (index != -1)
 				sb.deleteCharAt(index);
 		}
 		return sb.length() == 0;
 	}
+
 	public static String getWindow(String value, String pattren) {
+		if (pattren.isEmpty() || value.isEmpty() || pattren.length() > value.length())
+			return "";
 		Map<String, Integer> subStrings = allSubStrings(value);
 		return subStrings.entrySet().stream().filter(x -> containsAllCharacters(x.getKey(), pattren))
-		.min(Comparator.comparing(Entry::getValue))
-		.map(x -> x.getKey()).orElse("");
+				.min(Comparator.comparing(Entry::getValue)).map(x -> x.getKey()).orElse("");
 	}
 
 	public static void main(String[] args) {
-		System.out.println(getWindow("this is a test string","tist"));
+		System.out.println(getWindow("this is a test string", "tist"));
 	}
 
 }
