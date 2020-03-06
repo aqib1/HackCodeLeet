@@ -37,7 +37,7 @@ public class Substrings {
 		return subStrings.entrySet().stream().filter(x -> containsAllCharacters(x.getKey(), pattren))
 				.min(Comparator.comparing(Entry::getValue)).map(x -> x.getKey()).orElse("");
 	}
-
+	
 	public static void main(String[] args) {
 		System.out.println(getWindow("this is a test string", "tist"));
 	}
