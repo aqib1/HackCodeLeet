@@ -3,7 +3,7 @@ import java.util.Objects;
 
 public class Queue<T> {
 
-//	add (item): Add an item to the end of the list.
+//	add(item): Add an item to the end of the list.
 //	remove(): Remove the first item in the list.
 //	peek() : Return the top of the queue. 
 //	isEmpty(): Return true if and only if the queue is empty. 
