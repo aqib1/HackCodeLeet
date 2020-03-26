@@ -27,7 +27,7 @@ public class MinHeap {
 			index = getParentIndex(index);
 		}
 	}
-	
+
 	public Integer poll() {
 		Integer value = minHeap[0];
 		heapifyPoll();
@@ -35,27 +35,41 @@ public class MinHeap {
 	}
 
 	private void heapifyPoll() {
-		
-		
+		Integer[] copy = minHeap;
+		minHeap = new Integer[--heapSize];
+		heapSize = 0;
+		for (int x = 1; x < copy.length; x++)
+			add(copy[x]);
 	}
 
 	private int getParentIndex(int index) {
 		return (index - 1) / 2;
 	}
-	
+
+//	private int[] getChildIndexes(int current) {
+//		return new int[] { current + current + 1, current + current + 2 };
+//	}
+
 	@Override
 	public String toString() {
 		return Arrays.toString(minHeap);
 	}
 
 	public static void main(String[] args) {
-		MinHeap minHeap = new MinHeap(5);
+		MinHeap minHeap = new MinHeap(7);
 		minHeap.add(8);
 		minHeap.add(4);
 		minHeap.add(3);
-		minHeap.add(1);
 		minHeap.add(2);
-		
-		System.out.println(minHeap);
+		minHeap.add(19);
+		minHeap.add(15);
+		minHeap.add(1);
+
+		System.out.println(minHeap.poll());
+		System.out.println(minHeap.poll());
+		System.out.println(minHeap.poll());
+		System.out.println(minHeap.poll());
+		System.out.println(minHeap.poll());
+		System.out.println(minHeap.poll());
 	}
 }
