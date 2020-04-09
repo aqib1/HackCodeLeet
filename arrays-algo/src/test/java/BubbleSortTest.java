@@ -15,6 +15,18 @@ public class BubbleSortTest {
 	}
 
 	@Test
+	public void testBubbleSort() {
+		int[] array = bubbleSort.bubbleSort(new int[] { 2, 1, 3, 4, 5 });
+		Assert.assertArrayEquals(array, new int[] { 1, 2, 3, 4, 5 });
+	}
+
+	@Test
+	public void testBubbleSortNegativeValues() {
+		int[] array = bubbleSort.bubbleSort(new int[] { -2, -1, -3, -4, -5 });
+		Assert.assertArrayEquals(array, new int[] { -5, -4, -3, -2, -1 });
+	}
+
+	@Test
 	public void testBubbleSortForOneElement() {
 		int[] array = bubbleSort.bubbleSort(new int[] { 2 });
 		Assert.assertArrayEquals(array, new int[] { 2 });

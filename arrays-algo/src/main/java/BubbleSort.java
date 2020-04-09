@@ -7,7 +7,21 @@ public class BubbleSort {
 			throw new EmptyStackException();
 		if (array.length == 1)
 			return array;
-		return null;
+		boolean isSorted = false;
+		int lastSorted = array.length - 1;
+		while (!isSorted) {
+			isSorted = true;
+			for (int x = 0; x < lastSorted; x++) {
+				if (array[x] > array[x + 1]) {
+					int temp = array[x];
+					array[x] = array[x+1];
+					array[x+1] = temp;
+					isSorted = false;
+				}
+			}
+			if(!isSorted) --lastSorted;
+		}
+		return array;
 	}
 
 	public static void main(String[] args) {
