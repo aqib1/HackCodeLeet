@@ -3,6 +3,7 @@ import java.util.Objects;
 
 public class SelectionSort {
 
+	// Time complexity is O(n)2 space complexity is O(1)
 	public int[] selectionSort(int[] array) {
 		if (Objects.isNull(array) || array.length == 0)
 			throw new EmptyStackException();

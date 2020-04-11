@@ -2,6 +2,8 @@ import java.util.EmptyStackException;
 import java.util.Objects;
 
 public class BubbleSort {
+	
+	// Time complexity O(n)2 and space complexity O(1)
 	public int[] bubbleSort(int[] array) {
 		if (Objects.isNull(array) || array.length == 0)
 			throw new EmptyStackException();
