@@ -1,9 +1,23 @@
+import java.util.EmptyStackException;
+import java.util.Objects;
 
 public class InsertionSort {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public int[] insertionSort(int[] array) {
+		if (Objects.isNull(array) || array.length == 0)
+			throw new EmptyStackException();
+		if (array.length == 1)
+			return array;
+		for (int x = 1; x < array.length; x++) {
+			for (int y = x; y > 0; y--) {
+				if (array[y] < array[y - 1]) {
+					int temp = array[y];
+					array[y] = array[y - 1];
+					array[y - 1] = temp;
+				}
+			}
+		}
 
+		return array;
 	}
-
 }
