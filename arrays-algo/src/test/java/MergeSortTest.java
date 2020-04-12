@@ -36,11 +36,11 @@ public class MergeSortTest {
 	
 	@Test
 	public void testMerge() {
-		int[] array = new int[5];
-		int[] left = new int[] { 1, 2, 3 };
+		int[] array = new int[4];
+		int[] left = new int[] { 2, 3 };
 		int[] right = new int[] { 4, 5 };
 		mergeSort.merge(array, left, right);
-		Assert.assertArrayEquals(array, new int[] { 1, 2, 3, 4, 5 });
+		Assert.assertArrayEquals(array, new int[] { 2, 3, 4, 5 });
 	}
 
 	@Test

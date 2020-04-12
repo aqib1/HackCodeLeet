@@ -11,11 +11,14 @@ public class MergeSort {
 
 		return null;
 	}
+	
+	
 
 	public void merge(int[] array, int[] left, int[] right) {
 		if (Objects.isNull(array) || Objects.isNull(left) || Objects.isNull(right)) {
 			throw new EmptyStackException();
 		}
+
 		int pointer = 0, leftIndex = 0, rightIndex = 0;
 		while (leftIndex < left.length && rightIndex < right.length) {
 			if (left[leftIndex] < right[rightIndex]) {
