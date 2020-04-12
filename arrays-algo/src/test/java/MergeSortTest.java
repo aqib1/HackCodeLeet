@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-
 public class MergeSortTest {
 	private MergeSort mergeSort;
 
@@ -23,18 +22,40 @@ public class MergeSortTest {
 	public void testMergeSortForEmptyArray() {
 		mergeSort.mergeSort(new int[] {});
 	}
-	
+
 	@Test
 	public void testMergeSortForOneElementArray() {
-		int [] array = mergeSort.mergeSort(new int[] {1});
-		Assert.assertArrayEquals(array, new int[] {1});
+		int[] array = mergeSort.mergeSort(new int[] { 1 });
+		Assert.assertArrayEquals(array, new int[] { 1 });
 	}
 	
+	@Test(expected = EmptyStackException.class)
+	public void testMergeForEmptyArray() {
+		mergeSort.merge(null, null, null);
+	}
+	
+	@Test
+	public void testMerge() {
+		int[] array = new int[5];
+		int[] left = new int[] { 1, 2, 3 };
+		int[] right = new int[] { 4, 5 };
+		mergeSort.merge(array, left, right);
+		Assert.assertArrayEquals(array, new int[] { 1, 2, 3, 4, 5 });
+	}
+
 	@Test
 	public void testMergeSortMethodExists() throws NoSuchMethodException, SecurityException {
 		String methodName = "mergeSort";
 		Class<?> c = MergeSort.class;
 		Method method = c.getDeclaredMethod(methodName, int[].class);
+		Assert.assertNotNull(method);
+	}
+
+	@Test
+	public void testMergeMethodExists() throws NoSuchMethodException, SecurityException {
+		String methodName = "merge";
+		Class<?> c = MergeSort.class;
+		Method method = c.getDeclaredMethod(methodName, int[].class, int[].class, int[].class);
 		Assert.assertNotNull(method);
 	}
 }
