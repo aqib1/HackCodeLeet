@@ -3,6 +3,7 @@ import java.util.Objects;
 
 public class InsertionSort {
 
+	// Time complexity is O(n)2 and space complexity is O(1)
 	public int[] insertionSort(int[] array) {
 		if (Objects.isNull(array) || array.length == 0)
 			throw new EmptyStackException();
