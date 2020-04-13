@@ -1,8 +1,10 @@
 import java.util.EmptyStackException;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class MergeSort {
 
+	// Time complexity O(n log n) and space complexity is O(n)
 	public void mergeSort(int[] array) {
 		if (Objects.isNull(array) || array.length == 0)
 			throw new EmptyStackException();
@@ -10,12 +12,8 @@ public class MergeSort {
 			return;
 		}
 		int mid = array.length / 2;
-		int[] leftArray = new int[mid];
-		int[] rightArray = new int[array.length - mid];
-		for (int x = 0; x < mid; x++)
-			leftArray[x] = array[x];
-		for (int y = 0, z = mid; y < rightArray.length && z < array.length; z++, y++)
-			rightArray[y] = array[z];
+		int[] leftArray = IntStream.range(0, mid).map(x -> array[x]).toArray();
+		int[] rightArray = IntStream.range(mid, array.length).map(x -> array[x]).toArray();
 		mergeSort(leftArray);
 		mergeSort(rightArray);
 		merge(array, leftArray, rightArray);
