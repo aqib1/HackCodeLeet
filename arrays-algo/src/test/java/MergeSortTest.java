@@ -25,15 +25,30 @@ public class MergeSortTest {
 
 	@Test
 	public void testMergeSortForOneElementArray() {
-		int[] array = mergeSort.mergeSort(new int[] { 1 });
+		int[] array = new int[] { 1 };
+		mergeSort.mergeSort(array);
 		Assert.assertArrayEquals(array, new int[] { 1 });
 	}
-	
+
+	@Test
+	public void testMergeSort() {
+		int[] array = new int[] { 5, 4, 2, 3, 1 };
+		mergeSort.mergeSort(array);
+		Assert.assertArrayEquals(array, new int[] { 1, 2, 3, 4, 5 });
+	}
+
+	@Test
+	public void testMergeSortNegativeNumber() {
+		int[] array = new int[] { -1, -2, -3, -4, -5 };
+		mergeSort.mergeSort(array);
+		Assert.assertArrayEquals(array, new int[] { -5, -4, -3, -2, -1 });
+	}
+
 	@Test(expected = EmptyStackException.class)
 	public void testMergeForEmptyArray() {
 		mergeSort.merge(null, null, null);
 	}
-	
+
 	@Test
 	public void testMerge() {
 		int[] array = new int[4];

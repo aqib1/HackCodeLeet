@@ -3,16 +3,23 @@ import java.util.Objects;
 
 public class MergeSort {
 
-	public int[] mergeSort(int[] array) {
+	public void mergeSort(int[] array) {
 		if (Objects.isNull(array) || array.length == 0)
 			throw new EmptyStackException();
-		if (array.length == 1)
-			return array;
-
-		return null;
+		if (array.length < 2) {
+			return;
+		}
+		int mid = array.length / 2;
+		int[] leftArray = new int[mid];
+		int[] rightArray = new int[array.length - mid];
+		for (int x = 0; x < mid; x++)
+			leftArray[x] = array[x];
+		for (int y = 0, z = mid; y < rightArray.length && z < array.length; z++, y++)
+			rightArray[y] = array[z];
+		mergeSort(leftArray);
+		mergeSort(rightArray);
+		merge(array, leftArray, rightArray);
 	}
-	
-	
 
 	public void merge(int[] array, int[] left, int[] right) {
 		if (Objects.isNull(array) || Objects.isNull(left) || Objects.isNull(right)) {
