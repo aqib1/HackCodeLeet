@@ -25,16 +25,15 @@ public class TwoSumTest {
 		twoSum.twoSum(new int[] {}, 1);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testTwoSumIllegalArgumentException() {
+		twoSum.twoSum(new int[] { 1 }, 3);
+	}
+
 	@Test
 	public void testTwoSum() {
 		int result[] = twoSum.twoSum(new int[] { 1, 2, 3, 4 }, 3);
 		Assert.assertArrayEquals(new int[] { 0, 1 }, result);
-	}
-
-	@Test
-	public void testSingleElementArray() {
-		int[] array = twoSum.twoSum(new int[] { 1 }, 1);
-		Assert.assertArrayEquals(new int[] { 1 }, array);
 	}
 
 	@Test
