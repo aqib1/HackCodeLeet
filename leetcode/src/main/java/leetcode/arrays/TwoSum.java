@@ -1,29 +1,31 @@
 package leetcode.arrays;
 
+import java.util.Arrays;
 import java.util.EmptyStackException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class TwoSum {
 
-	public int[] twoSum(int[] array, int target) {
-		if(Objects.isNull(array) || array.length == 0)
+	public int[] twoSum(int[] nums, int target) {
+		if (Objects.isNull(nums) || nums.length == 0)
 			throw new EmptyStackException();
-		if(array.length == 1) 
-			return array;
-		int[] result = new int[2];
-		for(int z=0; z<array.length-1; z++) {
-			if(array[z] + array[z+1] == target) {
-				result[0] = z;
-				result[1] = z+1;
-				break;
+		if (nums.length < 2)
+			throw new IllegalArgumentException();
+
+		for (int x = 0; x < nums.length; x++) {
+			for (int y = x + 1; y < nums.length; y++) {
+				if (nums[x] + nums[y] == target)
+					return new int[] { x, y };
 			}
 		}
-			
-		return result;
+		throw new IllegalArgumentException();
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		TwoSum s = new TwoSum();
+		System.out.println(Arrays.toString(s.twoSum(new int[] { 3, 1, 3 }, 6)));
 
 	}
 
