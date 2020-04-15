@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class TwoSum {
 
+	//Time Complexity O(n)2 and space complexity is O(1)
 	public int[] twoSum(int[] nums, int target) {
 		if (Objects.isNull(nums) || nums.length == 0)
 			throw new EmptyStackException();
