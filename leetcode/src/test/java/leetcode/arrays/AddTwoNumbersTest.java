@@ -22,8 +22,21 @@ public class AddTwoNumbersTest {
 		addTwoNumbers.addTwoNumbers(null, null);
 	}
 	
-	public void testListNodeToNumberInReverse() {
-		
+	@Test
+	public void testReverseNumberFromListNode() {
+		ListNode li = new ListNode(4);
+		li.next = new ListNode(2);
+		li.next.next = new ListNode(1);
+		int number = addTwoNumbers.getReverseNumberFromListNode(li);
+		Assert.assertEquals(number, 124);
+	}
+	
+	@Test
+	public void testReverseNumberFromListNodeMethod() throws NoSuchMethodException, SecurityException {
+		String methodName = "getReverseNumberFromListNode";
+		Class<?> c = AddTwoNumbers.class;
+		Method method = c.getDeclaredMethod(methodName, ListNode.class);
+		Assert.assertNotNull(method);
 	}
 
 	@Test

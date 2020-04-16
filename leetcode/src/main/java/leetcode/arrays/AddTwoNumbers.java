@@ -20,12 +20,17 @@ public class AddTwoNumbers {
 	}
 
 	public int getReverseNumberFromListNode(ListNode li) {
-		int number = 0;
-		int mul = 1;
+		if (Objects.isNull(li))
+			throw new IllegalArgumentException();
+		if (Objects.isNull(li.next))
+			return li.val;
+		ListNode pointer = li;
+		int number = 0, mul = 1;
 		do {
-			number += li.val * mul;
+			number += pointer.val * mul;
 			mul *= 10;
-		} while (!Objects.isNull(li.next));
+			pointer = pointer.next;
+		} while (!Objects.isNull(pointer));
 		return number;
 	}
 
