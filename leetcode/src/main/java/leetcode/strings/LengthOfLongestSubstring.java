@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class LengthOfLongestSubstring {
 
-	// Brute force O(n)3 time and space O(k) where k is the number of string in List 
+	// Brute force O(n)4 time and space O(k) where k is the number of string in List 
 	public List<String> uniqueSubString(String value) {
 		if(Objects.isNull(value) || value.isEmpty())
 			return new ArrayList<>();
@@ -24,6 +24,7 @@ public class LengthOfLongestSubstring {
 		return uniqueSubstrings;
 	}
 
+	// O(n) due to streams and mapToInt
 	public int lengthOfLongestSubstring(String s) {
 		if(Objects.isNull(s))
 			return 0;
