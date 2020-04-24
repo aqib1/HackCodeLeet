@@ -14,11 +14,12 @@ public class MediamSortedArray {
 	 * their sorted order
 	 */
 
+	//Brute-force solution with time complexity O(n+m) with space O(n+m)
 	public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 		if (Objects.isNull(nums1) || Objects.isNull(nums2) || (nums1.length == 0 && nums2.length == 0))
 			return 0;
 		if (nums1.length == 1 && nums2.length == 1)
-			return (double) ((nums1[0] + nums2[0]) / 2);
+			return (double)(nums1[0] + nums2[0]) / 2;
 		int i = 0, j = 0, current = 0, n = (nums1.length + nums2.length);
 		int pointer = n / 2;
 		boolean isEven = n % 2 == 0 ? true : false;

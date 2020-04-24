@@ -40,8 +40,14 @@ public class MediamSortedArrayTest {
 
 	@Test
 	public void testFindMedianSortedArray2() {
-		double mediam = this.mediam.findMedianSortedArrays(new int[] { 1, 2 }, new int[] { 3 , 4});
+		double mediam = this.mediam.findMedianSortedArrays(new int[] { 1, 2 }, new int[] { 3, 4 });
 		Assert.assertEquals(mediam, 2.5, 0.0);
+	}
+
+	@Test
+	public void testFindMedianSortedArray3() {
+		double mediam = this.mediam.findMedianSortedArrays(new int[] { 100000 }, new int[] { 100001 });
+		Assert.assertEquals(mediam, 100000.5, 0.0);
 	}
 
 	@Test
