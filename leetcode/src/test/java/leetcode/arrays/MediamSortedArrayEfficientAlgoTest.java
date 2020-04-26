@@ -2,10 +2,10 @@ package leetcode.arrays;
 
 import java.lang.reflect.Method;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
 
 public class MediamSortedArrayEfficientAlgoTest {
 
@@ -19,15 +19,21 @@ public class MediamSortedArrayEfficientAlgoTest {
 	@Test
 	public void findMedianSortedArrayWithEmptyValues() {
 		double median = this.median.findMedianSortedArrays(new int[] {}, new int[] {});
-		Assert.assertEquals(median, 0);
+		Assert.assertEquals(median, 0.0, 0.0);
+	}
+	
+	@Test
+	public void findMedianSortedArray() {
+		double median = this.median.findMedianSortedArrays(new int[] {1, 3}, new int[] {2});
+		Assert.assertEquals(median, 2.0, 0.0);
 	}
 
 	@Test
 	public void findMedianSortedArraysWithNullValues() {
 		double median = this.median.findMedianSortedArrays(null, null);
-		Assert.assertEquals(median, 0);
+		Assert.assertEquals(median, 0.0, 0.0);
 	}
-
+	
 	@Test
 	public void findMedianSortedArraysTest() throws NoSuchMethodException, SecurityException {
 		String methodName = "findMedianSortedArrays";
