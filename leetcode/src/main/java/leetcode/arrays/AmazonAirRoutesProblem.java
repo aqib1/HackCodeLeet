@@ -34,9 +34,4 @@ public class AmazonAirRoutesProblem {
 
 		return result;
 	}
-
-//	public static void main(String[] args) {
-//		AmazonAirRoutesProblem amazonAirRoutesProblem = new AmazonAirRoutesProblem();
-//		amazonAirRoutesProblem.getAirRoutes(1, Arrays.asList(new int[] { 1, 3 }), Arrays.asList(new int[] { 1, 3 }));
-//	}
 }
