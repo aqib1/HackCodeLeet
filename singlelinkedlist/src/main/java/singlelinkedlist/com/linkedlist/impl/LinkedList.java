@@ -14,9 +14,17 @@ public class LinkedList<T> {
 		Node<T> node = new Node<>(data);
 		node.next = head;
 		head = node;
-		size++;
+		sizeIncrement();
 	}
 
+	private void sizeIncrement() {
+		size++;
+	}
+	
+	private void sizeDecrement() {
+		size--;
+	}
+	
 	public int getSize() {
 		return size;
 	}
@@ -30,13 +38,13 @@ public class LinkedList<T> {
 		Node<T> pointer = head;
 		if (pointer.data == value) {
 			head = head.next;
-			size--;
+			sizeDecrement();
 			return value;
 		} else {
 			while (!Objects.isNull(pointer) && !Objects.isNull(pointer.next)) {
 				if (pointer.next.data == value) {
 					pointer.next = pointer.next.next;
-					size--;
+					sizeDecrement();
 					isFound = true;
 				}
 				pointer = pointer.next;
@@ -58,10 +66,29 @@ public class LinkedList<T> {
 	public T pop() {
 		if (size == 0)
 			throw new EmptyStackException();
-		size--;
+		sizeDecrement();
 		Node<T> node = head;
 		head = head.next;
 		return node.data;
+	}
+	
+	// Distinct method remove duplicate values 
+	// Time complexity O(2)
+	public void distinct() {
+		if(size <= 1)
+			return;
+		Node<T> current = head, next = null;
+		while(!Objects.isNull(current)) {
+			next = current;
+			while(!Objects.isNull(next) && !Objects.isNull(next.next)) {
+				if(current.data == next.next.data) {
+					next.next = next.next.next;
+					sizeDecrement();
+				}
+				next = next.next;
+			}
+			current = current.next;
+		}
 	}
 
 	// O(n)

@@ -50,6 +50,18 @@ public class LinkedListTest {
 		Assert.assertTrue(linkedList.pop() == 3);
 		linkedList = null;
 	}
+	
+	@Test
+	public void testDistinct() {
+		linkedList.push(1);
+		linkedList.push(1);
+		linkedList.push(2);
+		linkedList.push(3);
+		linkedList.push(2);
+		linkedList.distinct();
+		Assert.assertTrue(linkedList.getSize() == 3);
+		System.out.println(linkedList);
+	}
 
 	@Test
 	public void testPopMethod() {
