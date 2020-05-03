@@ -2,6 +2,7 @@ package singlelinkedlist.com.linkedlist.impl;
 
 public class LinkedListDeleteMiddleNode {
 
+	// Time complexity O(n), space complexity O(1)
 	public <T> void deleteMiddle(LinkedList<T> li) {
 		if (li.getSize() == 2)
 			throw new RuntimeException("list size is less or equals to 2");
