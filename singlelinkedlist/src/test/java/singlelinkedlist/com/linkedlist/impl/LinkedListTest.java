@@ -61,6 +61,8 @@ public class LinkedListTest {
 		linkedList.distinct();
 		Assert.assertTrue(linkedList.getSize() == 3);
 		Assert.assertEquals(linkedList, getDistinctLinkedList());
+		
+		linkedList = null;
 	}
 	
 	private Object getDistinctLinkedList() {
@@ -113,6 +115,7 @@ public class LinkedListTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testSubLinkedListForNegKth() {
 		linkedList.subLinkedList(-1);
+		linkedList = null;
 	}
 	
 	@Test
@@ -126,6 +129,7 @@ public class LinkedListTest {
 		System.out.println(result);
 		Assert.assertTrue(result.getSize() == 3);
 		Assert.assertEquals(result.toString(), "[3, 2, 1]");
+		linkedList = null;
 	}
 
 	@Test

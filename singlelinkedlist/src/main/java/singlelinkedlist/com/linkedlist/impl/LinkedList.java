@@ -17,14 +17,18 @@ public class LinkedList<T> {
 		this.head = head;
 		initailizeSizeWithNewHead();
 	}
-
+	
 	private void initailizeSizeWithNewHead() {
 		Node<T> pointer = this.head;
 		while (!Objects.isNull(pointer)) {
 			pointer = pointer.next;
-			size++;
+			sizeIncrement();
 		}
 
+	}
+	
+	public Node<T> getHead() {
+		return head;
 	}
 
 	// O(1) with space complexity O(N) where N is the number of calls of push
@@ -35,11 +39,11 @@ public class LinkedList<T> {
 		sizeIncrement();
 	}
 
-	private void sizeIncrement() {
+	public void sizeIncrement() {
 		size++;
 	}
 
-	private void sizeDecrement() {
+	public void sizeDecrement() {
 		size--;
 	}
 
