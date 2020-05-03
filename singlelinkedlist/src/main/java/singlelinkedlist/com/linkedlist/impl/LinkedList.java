@@ -9,6 +9,24 @@ public class LinkedList<T> {
 
 	private int size;
 
+	public LinkedList() {
+		this(null);
+	}
+
+	public LinkedList(Node<T> head) {
+		this.head = head;
+		initailizeSizeWithNewHead();
+	}
+
+	private void initailizeSizeWithNewHead() {
+		Node<T> pointer = this.head;
+		while (!Objects.isNull(pointer)) {
+			pointer = pointer.next;
+			size++;
+		}
+
+	}
+
 	// O(1) with space complexity O(N) where N is the number of calls of push
 	public void push(T data) {
 		Node<T> node = new Node<>(data);
@@ -90,6 +108,8 @@ public class LinkedList<T> {
 			current = current.next;
 		}
 	}
+	
+	
 
 	// O(n)
 	@Override
@@ -104,6 +124,18 @@ public class LinkedList<T> {
 		}
 		string += "]";
 		return string;
+	}
+
+	// O(n)
+	public LinkedList<T> subLinkedList(int kth) {
+		if (kth < 0 || kth > getSize())
+			throw new IllegalArgumentException();
+		Node<T> pointer = this.head;
+		for (int x = kth; x > 0; x--) {
+			pointer = pointer.next;
+		}
+
+		return new LinkedList<T>(pointer);
 	}
 
 	@Override

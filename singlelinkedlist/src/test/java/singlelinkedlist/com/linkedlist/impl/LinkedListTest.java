@@ -109,6 +109,24 @@ public class LinkedListTest {
 		
 		linkedList = null;
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSubLinkedListForNegKth() {
+		linkedList.subLinkedList(-1);
+	}
+	
+	@Test
+	public void testSubLinkedListForKth() {
+		linkedList.push(1);
+		linkedList.push(2);
+		linkedList.push(3);
+		linkedList.push(4);
+		linkedList.push(5);
+		LinkedList<Integer> result = linkedList.subLinkedList(2);
+		System.out.println(result);
+		Assert.assertTrue(result.getSize() == 3);
+		Assert.assertEquals(result.toString(), "[3, 2, 1]");
+	}
 
 	@Test
 	public void testLinkedListMethods() throws NoSuchMethodException, SecurityException {
@@ -124,6 +142,15 @@ public class LinkedListTest {
 		Assert.assertNotNull(method);
 		methodName = "delete";
 		method = c.getDeclaredMethod(methodName, Object.class);
+		Assert.assertNotNull(method);
+		methodName = "equals";
+		method = c.getDeclaredMethod(methodName, Object.class);
+		Assert.assertNotNull(method);
+		methodName = "distinct";
+		method = c.getDeclaredMethod(methodName);
+		Assert.assertNotNull(method);
+		methodName = "subLinkedList";
+		method = c.getDeclaredMethod(methodName, int.class);
 		Assert.assertNotNull(method);
 	}
 }
