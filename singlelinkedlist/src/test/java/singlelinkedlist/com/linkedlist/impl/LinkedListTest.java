@@ -60,7 +60,15 @@ public class LinkedListTest {
 		linkedList.push(2);
 		linkedList.distinct();
 		Assert.assertTrue(linkedList.getSize() == 3);
-		System.out.println(linkedList);
+		Assert.assertEquals(linkedList, getDistinctLinkedList());
+	}
+	
+	private Object getDistinctLinkedList() {
+		LinkedList<Integer> li = new LinkedList<>();
+		li.push(1);
+		li.push(3);
+		li.push(2);
+		return li;
 	}
 
 	@Test

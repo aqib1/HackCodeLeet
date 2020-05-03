@@ -20,11 +20,11 @@ public class LinkedList<T> {
 	private void sizeIncrement() {
 		size++;
 	}
-	
+
 	private void sizeDecrement() {
 		size--;
 	}
-	
+
 	public int getSize() {
 		return size;
 	}
@@ -71,17 +71,17 @@ public class LinkedList<T> {
 		head = head.next;
 		return node.data;
 	}
-	
-	// Distinct method remove duplicate values 
+
+	// Distinct method remove duplicate values
 	// Time complexity O(2)
 	public void distinct() {
-		if(size <= 1)
+		if (size <= 1)
 			return;
 		Node<T> current = head, next = null;
-		while(!Objects.isNull(current)) {
+		while (!Objects.isNull(current)) {
 			next = current;
-			while(!Objects.isNull(next) && !Objects.isNull(next.next)) {
-				if(current.data == next.next.data) {
+			while (!Objects.isNull(next) && !Objects.isNull(next.next)) {
+				if (current.data == next.next.data) {
 					next.next = next.next.next;
 					sizeDecrement();
 				}
@@ -104,6 +104,24 @@ public class LinkedList<T> {
 		}
 		string += "]";
 		return string;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public boolean equals(Object obj) {
+		LinkedList<T> rLinkedList = ((LinkedList<T>) obj);
+		if (rLinkedList.getSize() != this.getSize())
+			return false;
+		Node<T> rNode = rLinkedList.head;
+		Node<T> cNode = this.head;
+		while (!Objects.isNull(rNode) && !Objects.isNull(cNode)) {
+			if (rNode.data != cNode.data)
+				return false;
+			rNode = rNode.next;
+			cNode = cNode.next;
+
+		}
+		return true;
 	}
 
 	class Node<M> {
