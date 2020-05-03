@@ -13,6 +13,8 @@ public class CycledLinkedList {
 		}
 	}
 
+	// Using floyd's hare and tortoise algorithm
+	// Time complexity O(n) and space is O(1)
 	public ListNode detectCycle(ListNode root) {
 		if (Objects.isNull(root) || Objects.isNull(root.next))
 			return null;
