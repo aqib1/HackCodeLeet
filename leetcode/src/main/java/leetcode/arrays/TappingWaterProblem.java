@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class TappingWaterProblem {
 	
+	
+	// Dynamic programming approach space complexity O(n) with time complexity O(n)
 	public int trap(int[] height) {
 		if (Objects.isNull(height) || height.length == 0)
 			return 0;
