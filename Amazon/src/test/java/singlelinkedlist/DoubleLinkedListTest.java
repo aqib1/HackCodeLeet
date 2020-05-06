@@ -25,7 +25,66 @@ public class DoubleLinkedListTest {
 
 		li = null;
 	}
+	
+	@Test
+	public void testFifoString() {
+		li.push(1);
+		li.push(2);
+		li.push(3);
 
+		Assert.assertTrue(li.getSize() == 3);
+		Assert.assertEquals(li.toFifoString(), "[1, 2, 3]");
+
+		li = null;
+	}
+
+	@Test
+	public void testPoll() {
+		li.push(1);
+		li.push(2);
+		li.push(3);
+
+		Assert.assertTrue(li.getSize() == 3);
+		Assert.assertTrue(li.poll() == 1);
+		li = null;
+	}
+	
+	@Test(expected = EmptyStackException.class)
+	public void testPollEmptyStack() {
+		li.push(1);
+		li.push(2);
+		li.push(3);
+		
+		li.pop();
+		li.pop();
+		li.pop();
+		
+		Assert.assertTrue(li.poll() == 1);
+		li = null;
+	}
+	
+	@Test
+	public void testPopFirst() {
+		li.push(1);
+		li.push(2);
+		li.push(3);
+
+		Assert.assertTrue(li.getSize() == 3);
+		Assert.assertTrue(li.popFirst() == 1);
+		Assert.assertTrue(li.getSize() == 2);
+		Assert.assertTrue(li.popFirst() == 2);
+		Assert.assertTrue(li.getSize() == 1);
+		Assert.assertTrue(li.popFirst() == 3);
+		Assert.assertTrue(li.getSize() == 0);
+		li = null;
+	}
+	
+	@Test(expected = EmptyStackException.class)
+	public void testPopFirstEmptyStack() {
+		Assert.assertTrue(li.popFirst() == 1);
+		li = null;
+	}
+	
 	@Test
 	public void testPeek() {
 		li.push(1);
