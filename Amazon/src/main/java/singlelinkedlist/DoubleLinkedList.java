@@ -41,12 +41,14 @@ public class DoubleLinkedList<T> {
 		return remove.data;
 	}
 
+	// O(1)
 	public T poll() {
 		if (Objects.isNull(root))
 			throw new EmptyStackException();
 		return first.data;
 	}
 
+	// O(1)
 	public T popFirst() {
 		if (Objects.isNull(root))
 			throw new EmptyStackException();
@@ -58,6 +60,7 @@ public class DoubleLinkedList<T> {
 		return remove.data;
 	}
 
+	// O(n)
 	public String toFifoString() {
 		Node<T> point = first;
 		String toString = "[";
@@ -71,6 +74,7 @@ public class DoubleLinkedList<T> {
 		return toString;
 	}
 
+	//O(n)
 	@Override
 	public String toString() {
 		Node<T> point = root;
@@ -87,6 +91,10 @@ public class DoubleLinkedList<T> {
 
 	public int getSize() {
 		return size;
+	}
+
+	public boolean isEmpty() {
+		return size == 0;
 	}
 
 	class Node<M> {

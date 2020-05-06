@@ -1,22 +1,23 @@
-package singlelinkedlist;
+package stack;
 
 import java.util.EmptyStackException;
 import java.util.Objects;
 
-public class LinkedList<T> {
+// Stack is a LIFO structure
+public class Stack<T> {
 	private Node<T> root;
 	private int size;
 
-	public LinkedList() {
+	public Stack() {
 
 	}
 
 	// Push O(1)
-	public void push(T data) {
-		Node<T> current = new Node<>(data);
-		current.next = root;
-		root = current;
+	public void push(T t) {
+		Node<T> node = new Node<>(t);
+		node.next = root;
 		size++;
+		root = node;
 	}
 
 	// Peek O(1)
