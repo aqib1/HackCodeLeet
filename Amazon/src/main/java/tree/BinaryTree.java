@@ -4,27 +4,29 @@ import java.util.EmptyStackException;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
- enum Traversal {
-	 BFS, 
-	 IN_ORDER, // DFS 
-	 PRE_ORDER, // DFS
-	 POST_ORDER, // DFS
-	 SPIRAL
- }
- 
+
+import stack.Stack;
+
+enum Traversal {
+	BFS, IN_ORDER, // DFS
+	PRE_ORDER, // DFS
+	POST_ORDER, // DFS
+	SPIRAL
+}
+
 public class BinaryTree<T> {
 	public static void main(String[] args) {
-		BinaryTree<Integer> bt = new BinaryTree<>(); 
+		BinaryTree<Integer> bt = new BinaryTree<>();
 		bt.add(3, 8);
 		bt.add(12, 4);
 		bt.add(11, 10);
 		bt.add(8, 6);
 		bt.add(81, 3);
 		bt.add(78, 12);
-		bt.print(Traversal.POST_ORDER);
-		
-		
+		bt.print(Traversal.SPIRAL);
+
 	}
+
 	private Node<T> root;
 
 	public void add(T t, int key) {
@@ -53,11 +55,11 @@ public class BinaryTree<T> {
 	public T find(int key) {
 		return search(root, key);
 	}
-	
+
 	public int height() {
 		return height(root);
 	}
-	
+
 	public void print(Traversal traversal) {
 		switch (traversal) {
 		case BFS:
@@ -72,32 +74,56 @@ public class BinaryTree<T> {
 		case POST_ORDER:
 			postOrderPrint(root);
 			break;
-		default:
+		case SPIRAL:
+			spiralOrder(root);
 			break;
 		}
 	}
-	
+
+	private void spiralOrder(BinaryTree<T>.Node<T> root) {
+		Stack<Node<T>> leftToRight = new Stack<>();
+		Stack<Node<T>> rightToLeft = new Stack<>();
+		leftToRight.push(root);
+		while (!leftToRight.isEmpty()) {
+			Node<T> node = leftToRight.pop();
+			if (!Objects.isNull(node)) {
+				System.out.println(node.key);
+				rightToLeft.push(node.right);
+				rightToLeft.push(node.left);
+				while (!rightToLeft.isEmpty()) {
+					node = rightToLeft.pop();
+					if (!Objects.isNull(node)) {
+						System.out.println(node.key);
+						leftToRight.push(node.left);
+						leftToRight.push(node.right);
+					}
+				}
+			}
+		}
+
+	}
+
 	// O(h)
 	private void levelOrderPrint(BinaryTree<T>.Node<T> root) {
-		if(Objects.isNull(root))
+		if (Objects.isNull(root))
 			throw new EmptyStackException();
-		
+
 		Queue<Node<T>> queue = new LinkedList<>();
 		queue.add(root);
-		while(!queue.isEmpty()) {
+		while (!queue.isEmpty()) {
 			Node<T> node = queue.poll();
 			System.out.print(node);
-			
-			if(!Objects.isNull(node.left))
+
+			if (!Objects.isNull(node.left))
 				queue.add(node.left);
-			if(!Objects.isNull(node.right))
+			if (!Objects.isNull(node.right))
 				queue.add(node.right);
 		}
 	}
 
 	// L-R-N O(h)
 	private void postOrderPrint(BinaryTree<T>.Node<T> root) {
-		if(Objects.isNull(root))
+		if (Objects.isNull(root))
 			return;
 		postOrderPrint(root.left);
 		postOrderPrint(root.right);
@@ -106,7 +132,7 @@ public class BinaryTree<T> {
 
 	// N-L-R O(h)
 	private void preOrderPrint(BinaryTree<T>.Node<T> root) {
-		if(Objects.isNull(root))
+		if (Objects.isNull(root))
 			return;
 		System.out.print(root);
 		preOrderPrint(root.left);
@@ -115,7 +141,7 @@ public class BinaryTree<T> {
 
 	// L-N-R O(h)
 	private void inOrderPrint(BinaryTree<T>.Node<T> root) {
-		if(Objects.isNull(root))
+		if (Objects.isNull(root))
 			return;
 		inOrderPrint(root.left);
 		System.out.print(root);
@@ -124,7 +150,7 @@ public class BinaryTree<T> {
 
 	// O(h)
 	private int height(Node<T> root) {
-		if(Objects.isNull(root))
+		if (Objects.isNull(root))
 			return -1;
 		int leftHeight = height(root.left);
 		int rightHeight = height(root.right);
@@ -198,10 +224,10 @@ public class BinaryTree<T> {
 		public void setRight(Node<M> right) {
 			this.right = right;
 		}
-		
+
 		@Override
 		public String toString() {
-			return data + ", "+ key +"\n";
+			return data + ", " + key + "\n";
 		}
 	}
 }
