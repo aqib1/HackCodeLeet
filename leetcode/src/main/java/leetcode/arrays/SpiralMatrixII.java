@@ -17,13 +17,13 @@ public class SpiralMatrixII {
 			n--;
 			if (k < m) {
 				for (int x = (n - 1); x >= l; x--) {
-					result[m-1][x] = index++;
+					result[m - 1][x] = index++;
 				}
 				m--;
 			}
 
 			if (l < n) {
-				for(int x=(m-1); x>= k; x--) {
+				for (int x = (m - 1); x >= k; x--) {
 					result[x][l] = index++;
 				}
 				l++;
