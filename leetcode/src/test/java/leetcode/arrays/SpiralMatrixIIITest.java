@@ -1,8 +1,6 @@
 package leetcode.arrays;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
