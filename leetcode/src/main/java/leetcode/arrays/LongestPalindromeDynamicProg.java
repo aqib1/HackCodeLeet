@@ -3,11 +3,8 @@ package leetcode.arrays;
 import java.util.Objects;
 
 public class LongestPalindromeDynamicProg {
-	public static void main(String[] args) {
-		System.out.println(longestPalindrome("cbbd"));
-	}
-
-	public static String longestPalindrome(String s) {
+	
+	public  String longestPalindrome(String s) {
 		if (Objects.isNull(s) || s.isEmpty())
 			return "";
 		// boolean table for dynamic problem solving
