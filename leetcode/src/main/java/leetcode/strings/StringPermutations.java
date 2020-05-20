@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class StringPermutations {
-	public static List<String> permutation(String s) {
+	public List<String> permutation(String s) {
 		if (Objects.isNull(s) || s.isEmpty())
 			return new ArrayList<>();
 		List<String> list = new ArrayList<String>();
@@ -13,7 +13,7 @@ public class StringPermutations {
 		return list;
 	}
 
-	private static void permutation(List<String> list, String s, int l, int r) {
+	private void permutation(List<String> list, String s, int l, int r) {
 		if (l == r)
 			list.add(s);
 		else {
@@ -25,16 +25,12 @@ public class StringPermutations {
 		}
 	}
 
-	private static String swap(String s, int x, int l) {
+	private String swap(String s, int x, int l) {
 		char[] data = s.toCharArray();
 		char temp = data[l];
 		data[l] = data[x];
 		data[x] = temp;
 		return String.valueOf(data);
-	}
-
-	public static void main(String[] args) {
-		System.out.println(permutation("abc"));
 	}
 
 }
