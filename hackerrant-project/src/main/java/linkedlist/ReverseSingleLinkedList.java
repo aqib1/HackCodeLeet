@@ -1,21 +1,6 @@
 package linkedlist;
+
 import java.util.Objects;
-
-class SinglyLinkedListNode {
-	int data;
-	SinglyLinkedListNode next;
-
-	@Override
-	public String toString() {
-		SinglyLinkedListNode pointer = this;
-		String value = "";
-		while (!Objects.isNull(pointer)) {
-			value += " " + pointer.data;
-			pointer = pointer.next;
-		}
-		return value;
-	}
-}
 
 public class ReverseSingleLinkedList {
 	public static void main(String[] args) {
