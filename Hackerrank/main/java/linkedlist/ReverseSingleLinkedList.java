@@ -1,3 +1,4 @@
+package linkedlist;
 import java.util.Objects;
 
 class SinglyLinkedListNode {
