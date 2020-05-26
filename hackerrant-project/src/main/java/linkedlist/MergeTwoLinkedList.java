@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class MergeTwoLinkedList {
 
+	// Time complexity O(N) and Space complexity O(n)
 	SinglyLinkedListNode mergeLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2) {
 		if (Objects.isNull(head1) && Objects.isNull(head2))
 			return null;
