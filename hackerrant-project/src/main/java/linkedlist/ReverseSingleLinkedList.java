@@ -16,6 +16,7 @@ public class ReverseSingleLinkedList {
 		System.out.println(reverse(li));
 	}
 
+	// Time complexity O(n) and space complexity O(n)
 	static SinglyLinkedListNode reverse(SinglyLinkedListNode head) {
 		SinglyLinkedListNode reverse = null;
 		while (!Objects.isNull(head)) {

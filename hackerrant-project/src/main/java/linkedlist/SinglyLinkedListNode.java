@@ -14,6 +14,7 @@ public class SinglyLinkedListNode {
 		this.data = data;
 	}
 
+	// Time complexity O(n) and space complexity O(1)
 	public static void printSinglyLinkedList(SinglyLinkedListNode node, String sep) {
 		while (node != null) {
 			System.out.print(node.data);

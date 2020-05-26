@@ -6,6 +6,7 @@ import java.util.Objects;
 public class DeleteOnKNode {
 
 	// 1->2->3->4
+	// Time complexity O(n) space complexity O(1)
 	SinglyLinkedListNode deleteNode(SinglyLinkedListNode head, int position) {
 		if (position < 0)
 			throw new IllegalArgumentException();

@@ -1,4 +1,5 @@
 package linkedlist;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Objects;
@@ -55,6 +56,7 @@ public class InsertIntoTailLinkedList {
 	 * SinglyLinkedListNode { int data; SinglyLinkedListNode next; }
 	 *
 	 */
+	// Time complexity is O(N) space complexity O(1)
 	static SinglyLinkedListNode insertNodeAtTail(SinglyLinkedListNode head, int data) {
 		if (Objects.isNull(head)) {
 			head = new SinglyLinkedListNode(data);

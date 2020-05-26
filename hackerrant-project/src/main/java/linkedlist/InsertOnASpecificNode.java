@@ -5,6 +5,7 @@ import java.util.EmptyStackException;
 public class InsertOnASpecificNode {
 
 	// 1->2->3->4
+	// Time complexity O(n) space complexity O(1)
 	SinglyLinkedListNode insertNodeAtPosition(SinglyLinkedListNode head, int data, int position) {
 		if (position < 0)
 			throw new IllegalArgumentException();

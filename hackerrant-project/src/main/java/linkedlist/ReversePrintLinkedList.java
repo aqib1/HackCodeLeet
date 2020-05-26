@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class ReversePrintLinkedList {
 	// 1->2->3->4
+	// Time complexity O(n) and space complexity O(n)
 	static void reversePrint(SinglyLinkedListNode head) {
 		SinglyLinkedListNode reverse = null;
 		while (!Objects.isNull(head)) {
