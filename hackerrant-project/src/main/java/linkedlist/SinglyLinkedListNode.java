@@ -28,6 +28,12 @@ public class SinglyLinkedListNode {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+
+		return this.data == ((SinglyLinkedListNode) obj).data;
+	}
+
+	@Override
 	public String toString() {
 		SinglyLinkedListNode pointer = this;
 		String value = "";
