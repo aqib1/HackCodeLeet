@@ -14,6 +14,18 @@ public class SinglyLinkedListNode {
 		this.data = data;
 	}
 
+	public static void printSinglyLinkedList(SinglyLinkedListNode node, String sep) {
+		while (node != null) {
+			System.out.print(node.data);
+
+			node = node.next;
+
+			if (node != null) {
+				System.out.print(sep);
+			}
+		}
+	}
+
 	@Override
 	public String toString() {
 		SinglyLinkedListNode pointer = this;
