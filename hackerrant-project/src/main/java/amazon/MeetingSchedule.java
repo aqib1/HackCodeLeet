@@ -10,6 +10,7 @@ import java.util.List;
 public class MeetingSchedule {
 	private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH mm");
 
+	// Time complexity n*nlog(n) and space complexity O(n)
 	public List<String> getSlots(int minutes, List<List<LocalTime>> slots) {
 		List<String> availableSlot = new ArrayList<>();
 		Collections.sort(slots, (a, b) -> a.get(0).compareTo(b.get(0)));
