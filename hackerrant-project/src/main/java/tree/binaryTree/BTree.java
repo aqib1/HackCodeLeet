@@ -23,7 +23,8 @@ public class BTree<T> {
 		bt.add(4, 4);
 		bt.add(8, 8);
 		bt.add(12, 12);
-		bt.print(Traverse.ZIGZAG);
+//		bt.print(Traverse.ZIGZAG);
+		System.out.println(bt.width(2));
 //		System.out.println(bt.maxNodesByHeight());
 	}
 
@@ -55,6 +56,20 @@ public class BTree<T> {
 	// O(h)
 	public int height() {
 		return height(root);
+	}
+
+	public int width(int level) {
+		return width(root, level);
+	}
+
+	private int width(Node<T> root, int level) {
+		if (Objects.isNull(root))
+			return 0;
+		if (level == 1)
+			return 1;
+		if (level > 1)
+			return width(root.left, level - 1) + width(root.right, level - 1);
+		return 0;
 	}
 
 	public int maxNodesByHeight() {
