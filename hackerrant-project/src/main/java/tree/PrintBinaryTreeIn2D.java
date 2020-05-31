@@ -32,6 +32,7 @@ public class PrintBinaryTreeIn2D {
 		return Arrays.stream(data).map(Arrays::asList).collect(Collectors.toList());
 	}
 
+	// Time complexity O(n) and space complexity O(n)
 	private void nodeValueInIndex(String[][] data, TreeNode root, int row, int start, int end) {
 		Queue<Row> queue = new LinkedList<>();
 		queue.add(new Row(row, start, end, root));
