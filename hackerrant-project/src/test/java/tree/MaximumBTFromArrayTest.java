@@ -23,6 +23,7 @@ public class MaximumBTFromArrayTest {
 		node.right = new TreeNode(5);
 		node.right.left = new TreeNode(0);
 		int[] data = new int[] { 3, 2, 1, 6, 0, 5 };
+		Assert.assertEquals(maximumBTFromArray.constructMaximumBinaryTree(data), node);
 	}
 
 	@Test
