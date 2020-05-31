@@ -8,9 +8,7 @@ public class MaximumBTFromArray {
 			return null;
 		if (nums.length == 1)
 			return new TreeNode(nums[0]);
-
 		return constructTree(nums, 0, nums.length);
-
 	}
 
 	private TreeNode constructTree(int[] nums, int start, int end) {
