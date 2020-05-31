@@ -23,7 +23,9 @@ public class BinaryTree<T> {
 		bt.add(8, 6);
 		bt.add(81, 3);
 		bt.add(78, 12);
+		bt.add(71, 9);
 		bt.print(Traversal.SPIRAL);
+		System.out.println(bt.width(3));
 
 	}
 
@@ -155,6 +157,20 @@ public class BinaryTree<T> {
 		int leftHeight = height(root.left);
 		int rightHeight = height(root.right);
 		return Math.max(leftHeight, rightHeight) + 1;
+	}
+
+	public int width(int level) {
+		return width(root, level);
+	}
+
+	private int width(Node<T> root, int level) {
+		if (Objects.isNull(root))
+			return 0;
+		if (level == 1)
+			return 1;
+		if (level > 1)
+			return width(root.left, level - 1) + width(root.right, level - 1);
+		return 0;
 	}
 
 	private T search(BinaryTree<T>.Node<T> root, int key) {
