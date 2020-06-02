@@ -6,6 +6,7 @@ public class CousinsInBinaryTree {
 	public boolean isCousins(TreeNode root, int x, int y) {
 		if (root == null)
 			return false;
+
 		int[] xDepth = depthWithParents(root, null, x, 0);
 		int[] yDepth = depthWithParents(root, null, y, 0);
 		return xDepth[0] != yDepth[0] && xDepth[1] == yDepth[1];
