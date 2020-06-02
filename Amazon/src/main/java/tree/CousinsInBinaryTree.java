@@ -2,6 +2,7 @@ package tree;
 
 public class CousinsInBinaryTree {
 
+	// Time complexity is O2(n) = O(n) and space complexity O(n)
 	public boolean isCousins(TreeNode root, int x, int y) {
 		if (root == null)
 			return false;
