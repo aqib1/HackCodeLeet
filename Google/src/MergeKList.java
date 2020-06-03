@@ -10,7 +10,7 @@ public class MergeKList {
 		}
 	}
 
-	// O(k* nlog(k)) ->
+	// O(k* Nlog(k)) ->
 	// O(K)
 	public static Node mergeKSortedLists(Node[] arr, int k) {
 		Node head = null, last = null;
