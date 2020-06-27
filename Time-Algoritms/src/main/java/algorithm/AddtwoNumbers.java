@@ -24,6 +24,7 @@ public class AddtwoNumbers {
 
 	// (2 -> 4 -> 3) + (5 -> 6 -> 4)
 	// 7 -> 0 -> 8
+	// O2(n) and space complexity is O(n)
 	public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		ListNode result = new ListNode();
 		ListNode pointer = result;
