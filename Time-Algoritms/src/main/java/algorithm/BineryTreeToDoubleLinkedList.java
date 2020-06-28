@@ -26,6 +26,7 @@ public class BineryTreeToDoubleLinkedList {
 		bt.leftNode.value = 3;
 		bt.rightNode = new BT();
 		bt.rightNode.value = 5;
+
 		System.out.println(bineryTreeToDoubleLinkedList.print(bineryTreeToDoubleLinkedList.toDoubleLinkedList(bt)));
 	}
 
