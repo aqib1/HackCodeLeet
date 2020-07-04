@@ -36,8 +36,10 @@ public class FindFromRotatedArray {
 	static int pivot(int arr[], int low, int high) {
 		/* low + (high - low)/2; */
 		int mid = low + (high - low) / 2;
+		// when mid element is pivot
 		if (arr[mid] > arr[mid + 1])
 			return mid;
+		// when one element before mid is pivot
 		if (mid > low && arr[mid - 1] > arr[mid])
 			return mid - 1;
 
