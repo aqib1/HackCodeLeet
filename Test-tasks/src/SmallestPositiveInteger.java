@@ -18,7 +18,9 @@ public class SmallestPositiveInteger {
 				s.add(x);
 		});
 
-		return IntStream.range(1, A.length + 2).filter(x -> !s.contains(x)).findFirst().getAsInt();
+		return IntStream.range(1, A.length + 2). //
+				filter(x -> !s.contains(x)). //
+				findFirst().getAsInt();
 
 	}
 }

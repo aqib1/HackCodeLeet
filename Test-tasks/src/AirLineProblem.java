@@ -10,7 +10,8 @@ public class AirLineProblem {
 		// defining seat labels Space O(10)
 		if (N <= 0)
 			return 0;
-		char[] seatLabels = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K' };
+		char[] seatLabels = { 'A', 'B', 'C', 'D', 'E', //
+				'F', 'G', 'H', 'J', 'K' };
 		HashMap<Character, Integer> seatWithNumbers = new HashMap<Character, Integer>();
 		// Time O(10) and Space O(10)
 		for (int x = 0; x < seatLabels.length; x++)
