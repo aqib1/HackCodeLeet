@@ -1,9 +1,10 @@
 package sortingalgorithms;
+
 import java.util.EmptyStackException;
 import java.util.Objects;
 
 public class BubbleSort {
-	
+
 	// Time complexity O(n)2 and space complexity O(1)
 	public int[] bubbleSort(int[] array) {
 		if (Objects.isNull(array) || array.length == 0)
@@ -17,12 +18,13 @@ public class BubbleSort {
 			for (int x = 0; x < lastSorted; x++) {
 				if (array[x] > array[x + 1]) {
 					int temp = array[x];
-					array[x] = array[x+1];
-					array[x+1] = temp;
+					array[x] = array[x + 1];
+					array[x + 1] = temp;
 					isSorted = false;
 				}
 			}
-			if(!isSorted) --lastSorted;
+			if (!isSorted)
+				--lastSorted;
 		}
 		return array;
 	}
