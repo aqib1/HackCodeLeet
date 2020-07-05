@@ -1,7 +1,7 @@
 package algorithm;
 
 public class LongestSubStringWithoutRepeatingCharacter {
-	// abcabcbb
+	// abcdabcbb
 	// Time complexity is O(n) and space is O(256)
 	public int lengthOfLongestSubstring(String s) {
 		int[] charCounts = new int[256];

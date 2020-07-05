@@ -42,6 +42,8 @@ public class BineryTreeToDoubleLinkedList {
 		return head;
 	}
 
+	// Time complexity O(n) where n is the number of nodes
+	// Space complexity O(1)
 	private void byInOrder(BT bt) {
 		if (bt == null)
 			return;
