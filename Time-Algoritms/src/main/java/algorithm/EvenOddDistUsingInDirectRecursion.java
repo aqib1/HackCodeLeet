@@ -3,6 +3,7 @@ package algorithm;
 public class EvenOddDistUsingInDirectRecursion {
 
 	// Indirect recursion
+	// Time complexity is O(n) and space is O(n)
 	public static int even(int n) {
 		if (n % 2 == 0) {
 			return n - 1;

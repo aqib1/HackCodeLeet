@@ -7,6 +7,7 @@ public class Fibonacci {
 	// its a non tail recursive function as
 	// in the last we are evaluating sum after return of recursive call
 
+	// O(n) time complexity and space is O(n)
 	public static int fib(int N) {
 		if (N == 0)
 			return 0;
