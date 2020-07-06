@@ -9,6 +9,7 @@ public class LexicographicalOrder {
 
 	}
 
+	// Time complexity O(n)2 and space is O(1)
 	private static void byBubbleSort(String[] arr) {
 		int limit = arr.length;
 		boolean isSorted = false;
