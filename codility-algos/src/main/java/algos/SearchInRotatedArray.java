@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 
 public class SearchInRotatedArray {
 
+	// Time complexity OnLog(n) and space is O(n)
 	public static boolean search(int[] nums, int target) {
 		if (nums == null || nums.length == 0)
 			return false;
@@ -18,7 +19,7 @@ public class SearchInRotatedArray {
 			// not rotated
 			return binerySearch(data, 0, data.size() - 1, target);
 		int pivot = pivot(data, 0, data.size() - 1);
-		if (nums[pivot] == target)
+		if (data.get(pivot) == target)
 			return true;
 		if (target >= nums[0])
 			return binerySearch(data, 0, pivot - 1, target);
