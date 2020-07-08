@@ -1,7 +1,5 @@
 package algos;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.stream.IntStream;
 
 public class ArrayPartitions {
@@ -10,26 +8,26 @@ public class ArrayPartitions {
 		System.out.println(canPartition(new int[] { 1, 5, 1, 1, 1, 1, 1, 1 }));
 	}
 
-	// time complexity Onlog(n) * O(n)^2 = O(n)^2
-	// Space complexity O(1) if we ignore that boxed Integer array
+	// time complexity O(n)
+	// Space complexity O(n) where n is the len(d)/2 + 1
 	private static boolean canPartition(int[] d) {
 		if (d == null || d.length <= 1) {
 			return false;
 		}
-		Integer[] data = IntStream.of(d).boxed().toArray(Integer[]::new);
-		Arrays.sort(data, Collections.reverseOrder());
-		int limit = (Arrays.stream(data).reduce(0, (a, b) -> a + b)) / 2;
-		for (int x = 0; x < data.length; x++) {
-			int sum = data[x];
-			for (int y = (x + 1); y < data.length; y++) {
-				if (sum + data[y] == limit)
-					return true;
+		int limit = IntStream.range(0, d.length).map(x -> d[x]).sum();
+		if (limit % 2 != 0)
+			return false;
+		limit = limit / 2;
+		boolean[] visited = new boolean[limit + 1];
+		visited[0] = true;
 
-				if (sum + data[y] < limit)
-					sum += data[y];
-
+		// 6 -> {2} -> {6-2} -> {3}
+		for (int x : d) {
+			for (int j = limit; j >= x; j--) {
+				visited[j] = visited[j] || visited[j - x];
 			}
 		}
-		return false;
+
+		return visited[limit];
 	}
 }
