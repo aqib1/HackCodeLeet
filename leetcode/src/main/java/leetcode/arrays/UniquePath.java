@@ -5,6 +5,7 @@ public class UniquePath {
 		System.out.println(uniquePaths(3, 3));
 	}
 
+	// Time complexity O(n) and space is O(n*m)
 	public static int uniquePaths(int m, int n) {
 		int[][] matrix = new int[m][n];
 
