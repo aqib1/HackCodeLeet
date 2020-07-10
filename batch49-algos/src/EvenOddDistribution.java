@@ -6,6 +6,8 @@ public class EvenOddDistribution {
 		evenOddDistribution.printNo(10);
 	}
 
+	// in direct recursion O(n)
+
 	public int odd(int value) {
 		if (value % 2 == 0)
 			return even(value);
