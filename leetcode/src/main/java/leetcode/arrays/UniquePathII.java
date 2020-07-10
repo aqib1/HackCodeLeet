@@ -6,6 +6,7 @@ public class UniquePathII {
 		System.out.println(uniquePathsWithObstacles(new int[][] { { 0, 0 }, { 1, 1 }, { 0, 0 } }));
 	}
 
+	// time complexity is O(n) and space is O(1)
 	public static int uniquePathsWithObstacles(int[][] obstacleGrid) {
 		if (obstacleGrid == null || obstacleGrid.length == 0)
 			return 0;
