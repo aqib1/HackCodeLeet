@@ -7,6 +7,7 @@ public class FibonacciSequence {
 		printFibonacci(20);
 	}
 
+	// Time complexity O(n) and space complexity O(n)
 	public static void printFibonacci(int k) {
 		for (int x = 0; x <= k; x++)
 			System.out.print(fibonacci(x, new HashMap<>()) + " ");
