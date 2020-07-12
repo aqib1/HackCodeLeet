@@ -6,6 +6,8 @@ public class KClosestPointsToOriginPoint {
 
 	// K closet points to Origin (0,0)
 
+	// Time complexity is O(n) and space complexity is O(n+m)
+
 	public int[][] kClosest(int[][] points, int K) {
 		if (points == null || points.length == 0)
 			return null;
