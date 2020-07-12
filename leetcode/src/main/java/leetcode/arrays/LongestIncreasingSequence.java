@@ -16,7 +16,7 @@ public class LongestIncreasingSequence {
 		while (j < d.length) {
 			for (int i = 0; i < j; i++) {
 				if (d[i] <= d[j]) {
-					backtrack[j] = backtrack[i] + 1;
+					backtrack[j] = Math.max(backtrack[j], backtrack[i] + 1);
 					max = Math.max(max, backtrack[j]);
 				}
 			}
@@ -27,7 +27,7 @@ public class LongestIncreasingSequence {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(getLongesSequence(new int[] { 1, 3, 5, 4, 7, 8, 9 }));
+		System.out.println(getLongesSequence(new int[] { 1, 2, -1, 5, 1 }));
 
 	}
 
