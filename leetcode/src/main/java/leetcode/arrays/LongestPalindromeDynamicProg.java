@@ -3,8 +3,8 @@ package leetcode.arrays;
 import java.util.Objects;
 
 public class LongestPalindromeDynamicProg {
-	
-	public  String longestPalindrome(String s) {
+
+	public String longestPalindrome(String s) {
 		if (Objects.isNull(s) || s.isEmpty())
 			return "";
 		// boolean table for dynamic problem solving
@@ -37,10 +37,10 @@ public class LongestPalindromeDynamicProg {
 
 		// for more than 2 characters
 		int j;
-		for (int k = 2; k < m - 2; k++) {
+		for (int k = 2; k < m; k++) {
 			for (int i = 0; i < m - k; i++) {
 				j = i + k;
-				if(s.charAt(i) == s.charAt(j) && strbrd[i+1][j-1]) {
+				if (s.charAt(i) == s.charAt(j) && strbrd[i + 1][j - 1]) {
 					strbrd[i][j] = true;
 					String subStr = s.substring(i, j + 1);
 					if (min_len < subStr.length()) {
