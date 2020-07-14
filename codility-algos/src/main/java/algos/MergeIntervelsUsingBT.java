@@ -100,7 +100,11 @@ class BTMerger {
 
 public class MergeIntervelsUsingBT {
 
-	public int[][] merge(int[][] intervals) {
+	public static void main(String[] args) {
+		System.out.println(Arrays.deepToString(merge(new int[][] { { 3, 12 }, { 4, 8 } })));
+	}
+
+	public static int[][] merge(int[][] intervals) {
 		Collections.sort(Arrays.asList(intervals), (a, b) -> Integer.compare(a[0], b[0]));
 		BTMerger btMerger = new BTMerger();
 		for (int[] d : intervals) {

@@ -9,11 +9,8 @@ public class MergeIntervelsI {
 
 	public static void main(String[] args) {
 		System.out.println(Arrays.deepToString(merge(new int[][] { //
-				{ 1, 3 }, //
-				{ 2, 6 }, //
-				{ 8, 10 }, //
-				{ 15, 18 } //
-
+				{ 3, 12 }, //
+				{ 4, 8 }, //
 		})));
 	}
 
