@@ -8,6 +8,7 @@ public class FindNextNumberAfterAdd {
 		System.out.println(Arrays.toString(returnAfterAdd(new int[] { 1, 9, 9 })));
 	}
 
+	// time complexity O(n) and space is O(n)
 	private static Integer[] returnAfterAdd(int[] arr) {
 		if (arr == null || arr.length == 0) {
 			return null;
