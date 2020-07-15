@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class FindRepeated {
 
+	// Time complexity is O(n) and space is O(n) -> worst case
 	public static int findRepeated(int[] repeated) {
 		if (repeated == null || repeated.length == 0)
 			return -1;
