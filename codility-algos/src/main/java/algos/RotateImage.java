@@ -4,6 +4,7 @@ public class RotateImage {
 	// take transpose of matrix
 	// swap first column with last
 
+	// Time complexity is O(n) and space is O(1)
 	public static void rotate(int[][] matrix) {
 		if (matrix == null || matrix.length == 0)
 			return;
