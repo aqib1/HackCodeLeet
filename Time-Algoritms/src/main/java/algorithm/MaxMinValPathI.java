@@ -17,13 +17,15 @@ public class MaxMinValPathI {
 	 * 
 	 * Here are some paths from [0,0] to [2,2] and the minimum value on each path:
 	 * 
+	 * path: 7->5->3->9->9, minimum value on this path: 3
+	 * 
 	 * path: 7->2->4->5->9, minimum value on this path: 2
 	 * 
 	 * path: 7->2->0->9->9, minimum value on this path: 0
 	 * 
 	 * path: 7->2->0->5->9, minimum value on this path: 0
 	 * 
-	 * In the end the max score(the min value) of all the paths is 2.
+	 * In the end the max score(the min value) of all the paths is 3.
 	 * 
 	 * Output: 2
 	 * 
