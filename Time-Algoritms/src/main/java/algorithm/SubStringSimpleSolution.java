@@ -12,18 +12,18 @@ import java.util.stream.Collectors;
 public class SubStringSimpleSolution {
 
 	public static void main(String[] args) {
-//		System.out.println(subStrings("bxb"));
+//		System.out.println(subStrings("bb"));
 //		System.out.println(subStrings("bbx"));
 //		System.out.println(subStrings("baabx"));
 //		System.out.println(subStrings("baccabx"));
 //		System.out.println(subStrings("bvcb"));
-//		System.out.println(subStrings("baddavdcxb"));
+//		System.out.println(subStrings("bffaddtavdeecxb"));
 //		System.out.println(subStrings("baba"));
 //		System.out.println(subStrings("baddacxbff"));
 //		System.out.println(subStrings("abcdadcba"));
 //		System.out.println(subStrings("baddacxb"));
 
-//		System.out.println(subStrings("abaxaxab"));
+//		System.out.println(subStrings("baaxaxabeaeeeeeeeee"));
 	}
 
 	// Walk through
@@ -40,7 +40,6 @@ public class SubStringSimpleSolution {
 			}
 		}
 
-		// abcdadcba
 		List<String> subStrings = new ArrayList<>();
 		subStrings.addAll(single.stream().map(x -> String.valueOf(x)).collect(Collectors.toList()));
 		while (!multipleValue.isEmpty()) {
@@ -53,18 +52,25 @@ public class SubStringSimpleSolution {
 				if (single.contains(current)) {
 					multipleValue.removeAll(valuesToRemove);
 					break;
-				} else if (value.lastIndexOf(current) < end) {
+				} else if (value.lastIndexOf(current) < end && index != value.lastIndexOf(current)) {
 					if (!containsAny(valuesToRemove, value.substring(index, value.lastIndexOf(current) + 1))) {
 						multipleValue.removeAll(valuesToRemove);
 						break;
 					}
 				} else if (value.lastIndexOf(current) > end) {
+					if (!containsAny(valuesToRemove, String.valueOf(current))) {
+						valuesToRemove.add(current);
+					}
 					end = value.lastIndexOf(current);
+
 				} else if (index == end) {
 					multipleValue.removeAll(valuesToRemove);
 					subStrings.add(value.substring(start, end + 1));
 				}
-				valuesToRemove.add(current);
+
+				if (value.lastIndexOf(current) <= end) {
+					valuesToRemove.add(current);
+				}
 			}
 		}
 
@@ -74,8 +80,8 @@ public class SubStringSimpleSolution {
 	private static boolean containsAny(Set<Character> valuesToRemove, String substring) {
 		if (substring == null || substring.isEmpty())
 			return false;
-		if (substring.length() == 1)
-			return true;
+//		if (substring.length() == 1)
+//			return true;
 		for (int x = 1; x < substring.length() - 1; x++)
 			if (valuesToRemove.contains(substring.charAt(x)))
 				return true;
