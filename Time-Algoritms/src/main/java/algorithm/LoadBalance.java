@@ -9,6 +9,7 @@ public class LoadBalance {
 	}
 
 	// [2, 4, 5, 3, 3, 9, 2, 2, 2]
+	// Time complexity O(n) -> for sum i am using streams
 	public static boolean loadBalance(int[] arr) {
 		int i = 1, j = arr.length - 2;
 		long sumI = arr[0], sumJ = arr[arr.length - 1];
