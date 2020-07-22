@@ -23,7 +23,7 @@ public class SubStringSimpleSolution {
 //		System.out.println(subStrings("abcdadcba"));
 //		System.out.println(subStrings("baddacxb"));
 
-//		System.out.println(subStrings("baaxaxabeaeeeeeeeee"));
+		System.out.println(subStrings("bacbxzecvacbxzecvb"));
 	}
 
 	// Walk through
