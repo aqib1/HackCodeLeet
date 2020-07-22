@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SubString {
 	public static void main(String[] args) {
-		System.out.println(subStrings("baddacxb"));
+		System.out.println(subStrings("bacbxzecvacbxzecvb"));
 
 	}
 
