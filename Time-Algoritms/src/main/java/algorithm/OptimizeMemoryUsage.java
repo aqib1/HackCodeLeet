@@ -10,7 +10,7 @@ import java.util.Queue;
 
 public class OptimizeMemoryUsage {
 	public static void main(String[] args) {
-		List<int[]> result = optimizeMemoryUsage(new int[] { 1, 7, 2, 4, 5, 6 }, new int[] { 1, 1, 2 }, 2);
+		List<int[]> result = optimizeMemoryUsage(new int[] { 1, 7, 2, 4, 5, 6 }, new int[] { 3, 1, 2 }, 6);
 		for (int[] r : result)
 			System.out.println(Arrays.toString(r));
 	}
