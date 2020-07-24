@@ -6,35 +6,6 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class ShippingRouteOptimal {
-	static class Route {
-		private int distance;
-		private int[] routes;
-
-		private Route() {
-		}
-
-		private Route(int distance, int[] routes) {
-			this.distance = distance;
-			this.routes = routes;
-		}
-
-		public int getDistance() {
-			return distance;
-		}
-
-		public void setDistance(int distance) {
-			this.distance = distance;
-		}
-
-		public int[] getRoutes() {
-			return routes;
-		}
-
-		public void setRoutes(int[] routes) {
-			this.routes = routes;
-		}
-
-	}
 
 	// Time complexity is O(n)2 and OLog(n) over all O(n)2 and space complexity is
 	// O(n)
@@ -69,5 +40,35 @@ public class ShippingRouteOptimal {
 				new int[][] { { 1, 2000 }, { 2, 3000 }, { 3, 4000 }, { 4, 5000 } }, 10000);
 		for (int[] r : result)
 			System.out.println(Arrays.toString(r));
+	}
+
+	static class Route {
+		private int distance;
+		private int[] routes;
+
+		private Route() {
+		}
+
+		private Route(int distance, int[] routes) {
+			this.distance = distance;
+			this.routes = routes;
+		}
+
+		public int getDistance() {
+			return distance;
+		}
+
+		public void setDistance(int distance) {
+			this.distance = distance;
+		}
+
+		public int[] getRoutes() {
+			return routes;
+		}
+
+		public void setRoutes(int[] routes) {
+			this.routes = routes;
+		}
+
 	}
 }
