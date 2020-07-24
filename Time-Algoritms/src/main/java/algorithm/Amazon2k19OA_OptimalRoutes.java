@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class ShippingRouteOptimal {
+public class Amazon2k19OA_OptimalRoutes {
 
 	// Time complexity is O(n)2 and OLog(n) over all O(n)2 and space complexity is
 	// O(n)

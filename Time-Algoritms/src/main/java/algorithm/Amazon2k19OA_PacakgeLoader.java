@@ -3,7 +3,7 @@ package algorithm;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
-public class PackageLoaderALgorithm {
+public class Amazon2k19OA_PacakgeLoader {
 	private static final int MARGIN = 30;
 
 	// Time complexity O(n)2 and OlogN over all will be O(n)2 and space will be O(n)
