@@ -27,7 +27,7 @@ public class MaxMinValPathI {
 	 * 
 	 * In the end the max score(the min value) of all the paths is 3.
 	 * 
-	 * Output: 2
+	 * Output: 3
 	 * 
 	 * using dynamic programming
 	 * 
