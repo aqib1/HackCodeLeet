@@ -3,11 +3,13 @@ package algorithm;
 // HCF
 public class Amazon2K20_HighestCommonFactor {
 
+	// 2, 4, 6, 8
+
 	public static void main(String[] args) {
-		System.out.println(findHCF(new int[] { 12, 4, 6, 8 }));
+		System.out.println(findGCF(new int[] { 12, 4, 6, 8 }));
 	}
 
-	public static int findHCF(int[] arr) {
+	public static int findGCF(int[] arr) {
 		int least = 0;
 		for (int a : arr) {
 			least = HCF(least, a);
@@ -22,6 +24,6 @@ public class Amazon2K20_HighestCommonFactor {
 		if (a == 0)
 			return b;
 
-		return HCF(a % b, a);
+		return HCF(b % a, a);
 	}
 }

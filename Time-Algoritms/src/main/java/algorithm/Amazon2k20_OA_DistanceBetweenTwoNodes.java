@@ -1,9 +1,10 @@
 package algorithm;
 
+import java.util.Arrays;
 import java.util.EmptyStackException;
 import java.util.List;
 
-public class Amazon2k20_OA_Demo2 {
+public class Amazon2k20_OA_DistanceBetweenTwoNodes {
 
 	public int bstDistance(int num, List<Integer> values, int node1, int node2) {
 		BT bt = new BT();
@@ -83,11 +84,11 @@ public class Amazon2k20_OA_Demo2 {
 		public int bstDistance(Node root, int from, int to) {
 			if (root == null)
 				return -1;
-			Node targetNode = directionMovement(root, from, to);
-			if (targetNode == null)
+			Node lca = leastCommonAncestor(root, from, to);
+			if (lca == null)
 				return -1;
 			try {
-				return getDistance(targetNode, from) + getDistance(targetNode, to);
+				return getDistance(lca, from) + getDistance(lca, to);
 			} catch (EmptyStackException e) {
 				return -1;
 			}
@@ -105,7 +106,7 @@ public class Amazon2k20_OA_Demo2 {
 			return 1 + getDistance(node, dest);
 		}
 
-		private Node directionMovement(Node root, int from, int to) {
+		private Node leastCommonAncestor(Node root, int from, int to) {
 			while (true) {
 				if (root.value > from && root.value > to) {
 					root = root.left;
@@ -118,10 +119,11 @@ public class Amazon2k20_OA_Demo2 {
 		}
 
 	}
-//		public static void main(String[] args) {
-//			Amazon2k20_OA_Demo2 d = new Amazon2k20_OA_Demo2();
-//			int dd = d.bstDistance(6, Arrays.asList(5, 6, 3, 1, 2, 4), 2, 4);
-//			System.out.println(dd);
-//
-//		}
+
+	public static void main(String[] args) {
+		Amazon2k20_OA_DistanceBetweenTwoNodes d = new Amazon2k20_OA_DistanceBetweenTwoNodes();
+		int dd = d.bstDistance(6, Arrays.asList(5, 6, 3, 1, 2, 4), 2, 4);
+		System.out.println(dd);
+
+	}
 }
