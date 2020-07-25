@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class Amazon2k19OA_HousesStates {
 
 	public static void main(String[] args) {
-		System.out.println(cellCompete(new int[] { 1, 1, 1, 0, 1, 0 }, 2));
+		System.out.println(cellCompete(new int[] { 0, 1, 0, 1, 1, 0, 0, 1 }, 7));
 	}
 
 	// time O(n) with space O(n)
@@ -30,6 +30,7 @@ public class Amazon2k19OA_HousesStates {
 				else
 					arr[state] = 1;
 			}
+			System.out.println(Arrays.toString(arr));
 			states = arr;
 
 		}

@@ -3,11 +3,11 @@ package algorithm;
 public class TreeNodeToDoubleLinkedList {
 
 	public static void main(String[] args) {
-		TreeNode bt = new TreeNode();
+		Node bt = new Node();
 		bt.val = 2;
-		bt.left = new TreeNode();
+		bt.left = new Node();
 		bt.left.val = 3;
-		bt.right = new TreeNode();
+		bt.right = new Node();
 		bt.right.val = 5;
 
 		TreeNodeToDoubleLinkedList treeNodeToDoubleLinkedList = new TreeNodeToDoubleLinkedList();
@@ -15,14 +15,14 @@ public class TreeNodeToDoubleLinkedList {
 
 	}
 
-	private TreeNode head, previous;
+	private Node head, previous;
 
-	public void toDoubleLinkedList(TreeNode treeNode) {
+	public void toDoubleLinkedList(Node treeNode) {
 		toDoubleLinkedListPostOrder(treeNode);
 		System.out.println(print(head));
 	}
 
-	private void toDoubleLinkedListPostOrder(TreeNode treeNode) {
+	private void toDoubleLinkedListPostOrder(Node treeNode) {
 		if (treeNode == null)
 			return;
 		toDoubleLinkedListPostOrder(treeNode.left);
@@ -39,8 +39,8 @@ public class TreeNodeToDoubleLinkedList {
 		}
 	}
 
-	private String print(TreeNode node) {
-		TreeNode pointer = node;
+	private String print(Node node) {
+		Node pointer = node;
 		String print = "";
 		while (pointer != null) {
 			print += pointer.val + " ";
@@ -49,7 +49,7 @@ public class TreeNodeToDoubleLinkedList {
 		return print;
 	}
 
-	private void toDoubleLinkedListInOrder(TreeNode treeNode) {
+	private void toDoubleLinkedListInOrder(Node treeNode) {
 		if (treeNode == null)
 			return;
 		toDoubleLinkedListInOrder(treeNode.left);
@@ -65,11 +65,11 @@ public class TreeNodeToDoubleLinkedList {
 
 	}
 
-	private void toDoubleLinkedListPreOrder(TreeNode treeNode) {
+	private void toDoubleLinkedListPreOrder(Node treeNode) {
 		if (treeNode == null)
 			return;
-		TreeNode left = treeNode.left;
-		TreeNode right = treeNode.right;
+		Node left = treeNode.left;
+		Node right = treeNode.right;
 		if (previous == null)
 			head = treeNode;
 		else {

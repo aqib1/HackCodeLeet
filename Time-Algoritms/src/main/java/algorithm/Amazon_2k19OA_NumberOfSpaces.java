@@ -1,15 +1,16 @@
 package algorithm;
 
-public class Amazon2k20OA_AmazonGoStore {
+public class Amazon_2k19OA_NumberOfSpaces {
+	private static boolean spaceFound;
 
 	private static final int[] directions = { 0, -1, 0, 1, 0 };
 
 	public static void main(String[] args) {
 		System.out.println(getNoStore(new int[][] { //
-				{ 1, 1, 1, 1 }, //
-				{ 0, 1, 0, 0 }, //
+				{ 1, 1, 0, 0 }, //
 				{ 0, 0, 0, 0 }, //
-				{ 0, 0, 1, 1 }, //
+				{ 0, 0, 0, 0 }, //
+				{ 1, 1, 0, 1 }, //
 				{ 1, 1, 1, 1 }//
 
 		}, 5, 4));
@@ -21,10 +22,12 @@ public class Amazon2k20OA_AmazonGoStore {
 
 		for (int row = 0; row < rows; row++) {
 			for (int col = 0; col < columns; col++) {
+				spaceFound = false;
 				if (grid[row][col] == 1) {
 					findSpaceInCluster(grid, row, col);
-					count++;
 				}
+				if (spaceFound)
+					count++;
 			}
 		}
 
@@ -41,7 +44,9 @@ public class Amazon2k20OA_AmazonGoStore {
 			if (newRow >= 0 && newRow < grid.length && newCol >= 0 && newCol < grid[newRow].length)
 				if (grid[newRow][newCol] == 1)
 					findSpaceInCluster(grid, newRow, newCol);
-
+				else if (grid[newRow][newCol] == 0) {
+					spaceFound = true;
+				}
 		}
 
 	}

@@ -1,15 +1,15 @@
 package algorithm;
 
 public class TreeToSingleLinkedList {
-	private TreeNode previous;
+	private Node previous;
 
 	// pre-order flatten
 	// O(n)
-	public void flatten(TreeNode root) {
+	public void flatten(Node root) {
 		if (root == null)
 			return;
-		TreeNode left = root.left;
-		TreeNode right = root.right;
+		Node left = root.left;
+		Node right = root.right;
 		if (previous != null) {
 			previous.right = root;
 			previous.left = null;

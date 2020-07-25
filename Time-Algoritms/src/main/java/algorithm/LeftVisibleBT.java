@@ -10,7 +10,7 @@ public class LeftVisibleBT {
 
 	private int MAX_LEVEL = -1;
 
-	public void rightSideView(List<Integer> data, TreeNode root, int currentLevel) {
+	public void rightSideView(List<Integer> data, Node root, int currentLevel) {
 		if (root == null)
 			return;
 
