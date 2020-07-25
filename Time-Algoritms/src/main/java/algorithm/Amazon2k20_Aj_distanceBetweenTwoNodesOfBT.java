@@ -5,16 +5,26 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
-public class DistanceBetweenTwoNodesOfBT {
+public class Amazon2k20_Aj_distanceBetweenTwoNodesOfBT {
+
+	// Time complexity is Onlogn + O(h) where h is the height of tree and N is the
+	// number of elements
+
+	// Space complexity is O(n) where N is the number of nodes created for each
+	// array element
 
 	public static void main(String[] args) {
-		DistanceBetweenTwoNodesOfBT distanceBetweenTwoNodesOfBT = new DistanceBetweenTwoNodesOfBT();
+		Amazon2k20_Aj_distanceBetweenTwoNodesOfBT distanceBetweenTwoNodesOfBT = new Amazon2k20_Aj_distanceBetweenTwoNodesOfBT();
+		// Time complexity for finding distance in O(h) where h is the height of tree
 		int dd = distanceBetweenTwoNodesOfBT.bstDistance(6, Arrays.asList(5, 6, 3, 1, 2, 4), 2, 26);
 		System.out.println(dd);
 	}
 
 	public int bstDistance(int num, List<Integer> values, int node1, int node2) {
 		BineryTree bt = new BineryTree();
+		// Time complexity for iterating each element is O(n)
+		// Time complexity for adding elements to Binary tree is O(logn)
+		// Overall complexity is Onlogn
 		IntStream.range(0, num).forEach(x -> bt.add(values.get(x)));
 		return bt.bstDistance(node1, node2);
 	}
