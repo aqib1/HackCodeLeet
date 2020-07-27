@@ -2,63 +2,48 @@ package algorithm;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
 
 public class Amazon_2k20OA_TagMerger {
 
 	public static class PairString {
-		private String pair1;
-		private String pair2;
+		private String first;
+		private String second;
 
-		public PairString(String pair1, String pair2) {
-			this.pair1 = pair1;
-			this.pair2 = pair2;
-		}
-
-		public String getPair1() {
-			return pair1;
-		}
-
-		public void setPair1(String pair1) {
-			this.pair1 = pair1;
-		}
-
-		public String getPair2() {
-			return pair2;
-		}
-
-		public void setPair2(String pair2) {
-			this.pair2 = pair2;
+		public PairString(String first, String second) {
+			this.first = first;
+			this.second = second;
 		}
 
 	}
 
 	public static void main(String[] args) {
-		PairString[] pairs = { //
+		List<PairString> pairs = Arrays.asList( //
 				new PairString("item1", "item2"), // -> item1, item3, item2
 				new PairString("item3", "item4"), //
 				new PairString("item5", "item6"), //
 				new PairString("item2", "item5")//
-		};
+		);
 
-		System.out.println(longestPairTag(pairs));
+		System.out.println(largestItemAssociation(pairs));
 	}
 
 	// Time complexity O(n2) and space is O(n)
-	public static List<String> longestPairTag(PairString[] pairs) {
+	public static List<String> largestItemAssociation(List<PairString> pairs) {
 		// using heap map with time complexity Ologn
 		PriorityQueue<List<String>> max_heap = new PriorityQueue<>(//
 				(l1, l2) -> Integer.compare(l2.size(), l1.size()));//
-		Arrays.sort(pairs, (ps1, ps2) -> ps1.getPair2().compareTo(ps2.getPair2()));
+		Collections.sort(pairs, (a, b) -> a.first.compareTo(b.first));
 
-		for (int pair = 0; pair < pairs.length; pair++) {
-			List<String> buildList = new ArrayList<>(Arrays.asList(pairs[pair].getPair1(), pairs[pair].getPair2()));
-			for (int inner = pair + 1; inner < pairs.length; inner++) {
-				if (allSame(buildList, pairs[inner])) {
+		for (int pair = 0; pair < pairs.size(); pair++) {
+			List<String> buildList = new ArrayList<>(Arrays.asList(pairs.get(pair).first, pairs.get(pair).second));
+			for (int inner = pair + 1; inner < pairs.size(); inner++) {
+				if (allSame(buildList, pairs.get(inner))) {
 					continue;
-				} else if (buildList.get(buildList.size() - 1).equals(pairs[inner].getPair1())) {
-					buildList.add(pairs[inner].getPair2());
+				} else if (buildList.get(buildList.size() - 1).equals(pairs.get(inner).first)) {
+					buildList.add(pairs.get(inner).second);
 				}
 			}
 			max_heap.add(buildList);
@@ -71,7 +56,7 @@ public class Amazon_2k20OA_TagMerger {
 		if (buildList.size() > 2)
 			return false;
 
-		return buildList.get(0).equals(pairString.getPair1()) //
-				&& buildList.get(1).equals(pairString.getPair2());
+		return buildList.get(0).equals(pairString.first) //
+				&& buildList.get(1).equals(pairString.second);
 	}
 }

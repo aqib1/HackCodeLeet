@@ -21,6 +21,9 @@ public class Amazon2k20_Aj_distanceBetweenTwoNodesOfBT {
 	}
 
 	public int bstDistance(int num, List<Integer> values, int node1, int node2) {
+		// Base case
+		if (Objects.isNull(values) || values.isEmpty())
+			return 0;
 		BineryTree bt = new BineryTree();
 		// Time complexity for iterating each element is O(n)
 		// Time complexity for adding elements to Binary tree is O(logn)

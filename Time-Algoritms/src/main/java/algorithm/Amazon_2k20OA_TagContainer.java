@@ -1,75 +1,64 @@
 package algorithm;
 
 import java.util.Arrays;
-import java.util.LinkedHashSet;
+import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class Amazon_2k20OA_TagContainer {
 	public static class PairString {
-		private String pair1;
-		private String pair2;
+		private String first;
+		private String second;
 
-		public PairString(String pair1, String pair2) {
-			this.pair1 = pair1;
-			this.pair2 = pair2;
+		public PairString(String first, String second) {
+			this.first = first;
+			this.second = second;
 		}
 
-		public String getPair1() {
-			return pair1;
+		@Override
+		public String toString() {
+			return first + " ," + second;
 		}
-
-		public void setPair1(String pair1) {
-			this.pair1 = pair1;
-		}
-
-		public String getPair2() {
-			return pair2;
-		}
-
-		public void setPair2(String pair2) {
-			this.pair2 = pair2;
-		}
-
 	}
 
 	public static void main(String[] args) {
-		PairString[] pairs = { //
+		List<PairString> pairs = Arrays.asList( //
 				new PairString("item1", "item2"), // -> item1, item3, item2
-				new PairString("item3", "item2"), //
-				new PairString("item5", "item6"), //
-				new PairString("item2", "item5")//
-		};
+				new PairString("item3", "item4"), //
+				new PairString("item2", "item5") //
+		);
 
-		System.out.println(longestPairTag(pairs));
+		System.out.println(largestItemAssociation(pairs));
 	}
 
 	// Time complexity O(n2) and space is O(n)
-	public static List<String> longestPairTag(PairString[] pairs) {
-		// using heap map with time complexity Ologn
-		PriorityQueue<List<String>> max_heap = new PriorityQueue<>(//
+	public static List<String> largestItemAssociation(List<PairString> pairs) {
+		if (pairs.isEmpty())
+			return Arrays.asList();
+		PriorityQueue<Set<String>> max_heap = new PriorityQueue<>(//
 				(l1, l2) -> Integer.compare(l2.size(), l1.size()));//
-		Arrays.sort(pairs, (ps1, ps2) -> ps1.getPair2().compareTo(ps2.getPair2()));
-
-		for (int pair = 0; pair < pairs.length; pair++) {
-			Set<String> buildList = new LinkedHashSet<>(Arrays.asList(pairs[pair].getPair1(), pairs[pair].getPair2()));
-			for (int inner = pair + 1; inner < pairs.length; inner++) {
-				mergeTag(buildList, pairs[inner]);
+		Collections.sort(pairs, (a, b) -> a.first.compareTo(b.first));
+		for (int pair = 0; pair < pairs.size(); pair++) {
+			Set<String> buildList = new TreeSet<>(Arrays.asList(pairs.get(pair).first, pairs.get(pair).second));
+			for (int inner = pair + 1; inner < pairs.size(); inner++) {
+				mergeTag(buildList, pairs.get(inner));
 			}
-			max_heap.add(buildList.stream().collect(Collectors.toList()));
+			max_heap.add(buildList);
 		}
-		return max_heap.poll();
+
+		return max_heap.poll().stream().collect(Collectors.toList());
 	}
 
 	private static void mergeTag(Set<String> buildList, PairString pairString) {
-		if (buildList.contains(pairString.getPair1()) && buildList.contains(pairString.getPair2()))
+		if (buildList.contains(pairString.first) && buildList.contains(pairString.second))
 			return;
-		if (buildList.contains(pairString.getPair1())) {
-			buildList.add(pairString.getPair2());
-		} else if (buildList.contains(pairString.getPair2())) {
-			buildList.add(pairString.getPair1());
+		if (buildList.contains(pairString.first)) {
+			buildList.add(pairString.second);
+		} else if (buildList.contains(pairString.second)) {
+			buildList.add(pairString.first);
 		}
 
 	}
