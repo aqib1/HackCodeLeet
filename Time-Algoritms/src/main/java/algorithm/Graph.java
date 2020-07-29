@@ -105,7 +105,6 @@ public class Graph {
 
 		@Override
 		public int hashCode() {
-			// TODO Auto-generated method stub
 			return this.name.hashCode();
 		}
 
