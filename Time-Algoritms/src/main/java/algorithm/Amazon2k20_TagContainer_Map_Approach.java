@@ -26,6 +26,7 @@ public class Amazon2k20_TagContainer_Map_Approach {
 		}
 	}
 
+	// Time complexity is O(n)2 and space complexity is O(n)
 	public static List<String> largestItemAssociation(List<PairString> pairs) {
 		if (pairs == null || pairs.isEmpty())
 			return null;
@@ -47,6 +48,7 @@ public class Amazon2k20_TagContainer_Map_Approach {
 		return max_heap.poll().stream().collect(Collectors.toList());
 	}
 
+	// O(n)2 where we will do depth first for all edges a vertex have
 	private static void DFS(Set<String> non_visited, String edge, Map<String, TreeSet<String>> graph, Set<String> add) {
 		if (!graph.containsKey(edge) || !non_visited.contains(edge))
 			return;
