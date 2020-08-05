@@ -1,5 +1,7 @@
 package time90minutesalgos.set1;
 
+import time90minutesalgos.TreeNode;
+
 public class SameBineryTree {
 	public static void main(String[] args) {
 		SameBineryTree s = new SameBineryTree();

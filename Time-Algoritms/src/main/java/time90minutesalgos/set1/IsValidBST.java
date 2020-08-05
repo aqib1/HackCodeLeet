@@ -1,5 +1,7 @@
 package time90minutesalgos.set1;
 
+import time90minutesalgos.TreeNode;
+
 public class IsValidBST {
 
 	public static void main(String[] args) {
