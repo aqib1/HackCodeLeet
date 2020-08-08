@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Amazon_2K20_Mn_FilmProblem_Clean {
 
+	// O(n) time complexity with O(26) space complexity
 	static List<Integer> lengthEachScene(List<Character> inputList) {
 		List<Integer> lengths = new ArrayList<>();
 		int[] lastIndexMap = new int[26];
