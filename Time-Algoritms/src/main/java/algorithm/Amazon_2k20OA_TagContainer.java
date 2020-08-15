@@ -37,7 +37,7 @@ public class Amazon_2k20OA_TagContainer {
 	// Time complexity O(n2) and space is O(n)
 	public static List<String> largestItemAssociation(List<PairString> pairs) {
 		if (pairs.isEmpty())
-			return Arrays.asList();
+			return null;
 		PriorityQueue<Set<String>> max_heap = new PriorityQueue<>(//
 				(l1, l2) -> Integer.compare(l2.size(), l1.size()));//
 		Collections.sort(pairs, (a, b) -> a.first.compareTo(b.first));

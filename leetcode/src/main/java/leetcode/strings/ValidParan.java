@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Stack;
 
 public class ValidParan {
+	// Time complexity On, and space is O(n)
 	public boolean isValid(String s) {
 		Map<Character, Character> bracketMap = new HashMap<>();
 		bracketMap.put(')', '(');
