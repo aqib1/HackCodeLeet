@@ -27,6 +27,7 @@ import java.util.Queue;
 public class MatrixO1 {
 	private static final int[] directions = { 0, -1, 0, 1, 0 };
 
+	// Time complexity is O(n)2 and space is O(n)
 	public static int[][] updateMatrix(int[][] matrix) {
 		Queue<int[]> indexesToBeConsider = new LinkedList<>();
 		boolean[][] isVisited = new boolean[matrix.length][];

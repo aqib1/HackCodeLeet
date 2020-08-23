@@ -3,6 +3,7 @@ package time90minutesalgos.set3;
 import time90minutesalgos.TreeNode;
 
 public class InsertIntoTreeNode {
+	// Time complexity is Ologn and space is O(1)
 	public TreeNode insertIntoBST(TreeNode root, int val) {
 		if (root == null) {
 			root = new TreeNode(val);
