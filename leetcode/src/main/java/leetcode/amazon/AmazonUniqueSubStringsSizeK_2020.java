@@ -1,6 +1,8 @@
 package leetcode.amazon;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AmazonUniqueSubStringsSizeK_2020 {
 
@@ -22,8 +24,34 @@ public class AmazonUniqueSubStringsSizeK_2020 {
 	 * 
 	 * The input string consists of only lowercase English letters [a-z] 0 ≤ k ≤ 26
 	 */
-	public static Set<String> uniqueSubstringSizeK(String s, int k) {
+	public static void main(String[] args) {
+		System.out.println(uniqueSubstringSizeK("abacab", 3));
+	}
 
-		return null;
+	// Time complexity O(n*26) = O(n) and space is O(n + 26) = O(n)
+	public static List<String> uniqueSubstringSizeK(String s, int k) {
+		if (k == 0 || s.isEmpty()) {
+			return new ArrayList<>();
+		}
+		int[] charCounter = new int[26];
+		int i = 0, j = 0, uniquecount = 0;
+		List<String> result = new ArrayList<>();
+		while (i < s.length() && j < s.length()) {
+			int count = ++charCounter[s.charAt(j++) - 'a'];
+			uniquecount++;
+			if (count > 1) {
+				charCounter[s.charAt(i++) - 'a']--;
+				uniquecount--;
+			}
+			if (uniquecount == k) {
+				result.add(s.substring(i++, j));
+				uniquecount = 0;
+				Arrays.fill(charCounter, 0);
+				j = i;
+			}
+
+		}
+
+		return result;
 	}
 }
