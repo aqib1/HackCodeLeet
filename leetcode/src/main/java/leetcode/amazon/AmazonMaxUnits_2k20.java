@@ -1,7 +1,10 @@
 package leetcode.amazon;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  * An Amazon warehouse manager needs to create a shipment to fill a truck, All
@@ -22,9 +25,36 @@ import java.util.HashMap;
  */
 
 public class AmazonMaxUnits_2k20 {
-	public static long getMaxUnit(int num, ArrayList<Integer> boxes, int unitSize, ArrayList<Integer> unitsPerBox,
+	public static void main(String[] args) {
+		System.out.println(getMaxUnit(3, Arrays.asList(1, 2, 3), 3, Arrays.asList(3, 2, 1), 3));
+	}
+
+	public static long getMaxUnit(int num, List<Integer> boxes, int unitSize, List<Integer> unitsPerBox,
 			long truckSize) {
+		if (num != unitSize)
+			throw new IllegalArgumentException("Number of boxes must equals to unit size");
+
 		Map<Integer, Integer> unitSizeByNoOfBoxes = new HashMap<>();
-		return 0;
+		long result = 0;
+		for (int x = 0; x < num; x++) {
+			unitSizeByNoOfBoxes.put(unitsPerBox.get(x), boxes.get(x));
+		}
+		PriorityQueue<Integer> max_heap = new PriorityQueue<>((a, b) -> Integer.compare(b, a));
+		for (int keys : unitSizeByNoOfBoxes.keySet()) {
+			max_heap.add(keys);
+		}
+
+		while (truckSize != 0) {
+			int maxUnit = max_heap.poll();
+			int numberOfBoxes = unitSizeByNoOfBoxes.get(maxUnit);
+			if (numberOfBoxes > truckSize) {
+				result += (truckSize * maxUnit);
+				break;
+			}
+			result += (numberOfBoxes * maxUnit);
+			truckSize -= numberOfBoxes;
+		}
+
+		return result;
 	}
 }
