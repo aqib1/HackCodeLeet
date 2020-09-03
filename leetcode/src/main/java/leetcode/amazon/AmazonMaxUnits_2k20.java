@@ -26,9 +26,10 @@ import java.util.PriorityQueue;
 
 public class AmazonMaxUnits_2k20 {
 	public static void main(String[] args) {
-		System.out.println(getMaxUnit(3, Arrays.asList(1, 2, 3), 3, Arrays.asList(3, 2, 1), 3));
+		System.out.println(getMaxUnit(3, Arrays.asList(1, 2, 2), 3, Arrays.asList(3, 2, 3), 3));
 	}
 
+	// Time complexity is O(n) and space is O(n)
 	public static long getMaxUnit(int num, List<Integer> boxes, int unitSize, List<Integer> unitsPerBox,
 			long truckSize) {
 		if (num != unitSize)
@@ -44,14 +45,10 @@ public class AmazonMaxUnits_2k20 {
 			max_heap.add(keys);
 		}
 
-		while (truckSize != 0) {
+		while (truckSize > 0) {
 			int maxUnit = max_heap.poll();
 			int numberOfBoxes = unitSizeByNoOfBoxes.get(maxUnit);
-			if (numberOfBoxes > truckSize) {
-				result += (truckSize * maxUnit);
-				break;
-			}
-			result += (numberOfBoxes * maxUnit);
+			result += ((numberOfBoxes > truckSize ? numberOfBoxes - truckSize : numberOfBoxes) * maxUnit);
 			truckSize -= numberOfBoxes;
 		}
 
