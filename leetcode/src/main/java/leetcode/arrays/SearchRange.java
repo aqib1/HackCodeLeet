@@ -1,5 +1,7 @@
 package leetcode.arrays;
 
+import java.util.Arrays;
+
 /**
  * 
  * Given an array of integers nums sorted in ascending order, find the starting
@@ -23,17 +25,47 @@ package leetcode.arrays;
  */
 public class SearchRange {
 
-	public int[] searchRange(int[] nums, int target) {
-		int low = searchRange(nums, target, true);
-		return null;
+	public static void main(String[] args) {
+		System.out.println(Arrays.toString(searchRange(new int[] { 3, 3, 3, 3, 3, 3, 3, 3 }, 3)));
 	}
 
-	private int searchRange(int[] nums, int target, boolean left) {
+	// Time complexity is Log(n) + Log(n) = 2Log(n) = Log(n) and space is O(2)
+	public static int[] searchRange(int[] nums, int target) {
+		int low = searchRange(nums, target, true);
+		int heigh = searchRange(nums, target, false);
+		return new int[] { low, heigh };
+	}
+
+	private static int searchRange(int[] nums, int target, boolean left) {
 		int low = 0;
 		int heigh = nums.length - 1;
-		while (low < heigh) {
+		while (low <= heigh) {
+			if (low == heigh && nums[low] == target)
+				return low;
 			int mid = (low + heigh) / 2;
+			if (nums[mid] == target) {
+				if (left) {
+					if (mid - 1 < 0 || nums[mid - 1] != target) {
+						return mid;
+					}
+				} else {
+					if (mid + 1 > nums.length - 1 || nums[mid + 1] != target) {
+						return mid;
+					}
+				}
+			}
+			if (nums[mid] > target) {
+				heigh = mid - 1;
+			} else if (nums[mid] < target) {
+				low = mid + 1;
+			} else {
+				if (left) {
+					heigh = mid - 1;
+				} else {
+					low = mid + 1;
+				}
+			}
 		}
-		return 0;
+		return -1;
 	}
 }
