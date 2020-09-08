@@ -29,7 +29,7 @@ public class AmazonMaxUnits_2k20 {
 		System.out.println(getMaxUnit(3, Arrays.asList(1, 2, 2), 3, Arrays.asList(3, 2, 3), 3));
 	}
 
-	// Time complexity is O(n) and space is O(n)
+	// Time complexity is O(nlogn) and space is O(n)
 	public static long getMaxUnit(int num, List<Integer> boxes, int unitSize, List<Integer> unitsPerBox,
 			long truckSize) {
 		if (num != unitSize)
