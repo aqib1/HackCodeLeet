@@ -61,7 +61,7 @@ public class ZalandoAlgos {
 	// null | [] -> 0
 	// 5, 2, 1, 4 -> 0
 	// 5, 2, 3, 1, 7 -> 3
-	// 6, 7, 1, 3, 1, 2, 8, 9, 2 -> 5
+	// 6, 7, 1, 3, 2, 1, 8 -> 2
 	public static int solution2(int[] arr) {
 		if (Objects.isNull(arr) || arr.length <= 4) {
 			return 0;
@@ -72,8 +72,11 @@ public class ZalandoAlgos {
 		
 		while (p < q - 1) {
 			MIN_VALUE = Math.min(MIN_VALUE, arr[p] + arr[q]);
-			p++;
-			q--;
+			if(arr[p] > arr[q]) {
+				p++;	
+			} else {
+				q--;	
+			}
 		}
 
 		return MIN_VALUE;
