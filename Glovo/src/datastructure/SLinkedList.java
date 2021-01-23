@@ -5,16 +5,14 @@ import java.util.Objects;
 import java.util.stream.IntStream;
 
 /**
- * Its a LIFO root -> null newNode.next = root, root = newNod, structure newNode
- * -> root(null) => root -> null
+ * LIFO -> LAST IN FIRST OUT node -> node -> node
  * 
  */
-
-public class StackDS<T> {
+public class SLinkedList<T> {
 	private Node<T> root;
-	private int size = 0;
+	private int size;
 
-	// O(1)
+	//O(1)
 	public void push(T data) {
 		if (Objects.isNull(data)) {
 			throw new IllegalArgumentException();
@@ -23,7 +21,7 @@ public class StackDS<T> {
 		size++;
 	}
 
-	// O(1)
+	//O(1)
 	public T peek() {
 		if (size == 0) {
 			throw new EmptyStackException();
@@ -31,16 +29,17 @@ public class StackDS<T> {
 		return root.getData();
 	}
 
-	// O(1)
+	//O(1)
 	public T pop() {
 		if (size == 0) {
 			throw new EmptyStackException();
 		}
-		size--;
 		Node<T> current = root;
 		root = root.next;
+		size--;
 		return current.getData();
 	}
+
 	// O(n)
 	@Override
 	public String toString() {
@@ -62,7 +61,7 @@ public class StackDS<T> {
 		private M data;
 
 		public Node() {
-			this(null, null);
+			this(null);
 		}
 
 		public Node(M data) {
@@ -81,28 +80,27 @@ public class StackDS<T> {
 		public Node<M> getNext() {
 			return next;
 		}
-		
 	}
-	
 	public static void main(String[] args) {
-		StackDS<Integer> stackDS = new StackDS<>();
+		SLinkedList<Integer> out = new SLinkedList<>();
+		// O(5) -> in the case of N it will be O(n)
 		IntStream.range(0, 5).forEach(x -> {
-			stackDS.push(x);
+			out.push(x);
 		});
 		
-		System.out.println(stackDS.peek());
-		System.out.println(stackDS);
-		System.out.println(stackDS.pop());
-		System.out.println(stackDS);
-		System.out.println(stackDS.pop());
-		System.out.println(stackDS);
-		System.out.println(stackDS.pop());
-		System.out.println(stackDS);
-		System.out.println(stackDS.pop());
-		System.out.println(stackDS);
-		System.out.println(stackDS.pop());
-		System.out.println(stackDS);
-		System.out.println(stackDS.pop());
-		System.out.println(stackDS);
+		System.out.println(out.peek());
+		System.out.println(out);
+		System.out.println(out.pop());
+		System.out.println(out);
+		System.out.println(out.pop());
+		System.out.println(out);
+		System.out.println(out.pop());
+		System.out.println(out);
+		System.out.println(out.pop());
+		System.out.println(out);
+		System.out.println(out.pop());
+		System.out.println(out);
+		System.out.println(out.pop());
+		System.out.println(out);
 	}
 }
