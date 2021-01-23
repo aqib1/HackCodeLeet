@@ -1,7 +1,0 @@
-/*
- * 
- * 
- * **/
-public class TreasureIsland2 {
-
-}
