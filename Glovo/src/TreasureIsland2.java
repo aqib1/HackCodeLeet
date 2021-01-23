@@ -1,0 +1,7 @@
+/*
+ * 
+ * 
+ * **/
+public class TreasureIsland2 {
+
+}

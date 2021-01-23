@@ -14,7 +14,7 @@ public class AmazonUniqueSubStringsSizeK_2020 {
 	 * 
 	 * Input: s = "abcabc", k = 3 Output: ["abc", "bca", "cab"] Example 2:
 	 * 
-	 * Input: s = "abacab", k = 3 Output: ["bac", "cab"] Example 3:
+	 * Input: s = "abbacab", k = 3 Output: ["bac", "cab"] Example 3:
 	 * 
 	 * Input: s = "awaglknagawunagwkwagl", k = 4 Output: ["wagl", "aglk", "glkn",
 	 * "lkna", "knag", "gawu", "awun", "wuna", "unag", "nagw", "agwk", "kwag"]
@@ -25,7 +25,7 @@ public class AmazonUniqueSubStringsSizeK_2020 {
 	 * The input string consists of only lowercase English letters [a-z] 0 ≤ k ≤ 26
 	 */
 	public static void main(String[] args) {
-		System.out.println(uniqueSubstringSizeK("abacab", 3));
+		System.out.println(uniqueSubstringSizeK("awaglknagawunagwkwagl", 4));
 	}
 
 	// Time complexity O(n*26) = O(n) and space is O(n + 26) = O(n)
