@@ -3,6 +3,7 @@ package datastructure;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
+import java.util.Stack;
 
 enum Traversal {
 	BFS, IN_ORDER, // DFS
@@ -15,7 +16,7 @@ public class BTree<T> {
 
 	public static void main(String[] args) {
 		BTree<Integer> bt = new BTree<>();
-		bt.add(3, 8);
+		bt.add(6, 8);
 		bt.add(12, 4);
 		bt.add(11, 10);
 		bt.add(8, 6);
@@ -23,7 +24,10 @@ public class BTree<T> {
 		bt.add(78, 12);
 		bt.add(71, 9);
 		bt.add(2, 19);
-		bt.print(Traversal.BFS);
+		bt.add(4, 29);
+		bt.add(1, 11);
+		bt.add(5, 9);
+		bt.print(Traversal.SPIRAL);
 //		System.out.println(bt.width(3));
 
 	}
@@ -43,7 +47,32 @@ public class BTree<T> {
 		case IN_ORDER -> inOrder(root);
 		case PRE_ORDER -> preOrder(root);
 		case POST_ORDER -> postOrder(root);
+		case SPIRAL -> spiral(root);
 		default -> bfs(root);
+		}
+	}
+
+	private void spiral(Node<T> root) {
+		Stack<Node<T>> leftToRight = new Stack<>();
+		Stack<Node<T>> rightToLeft = new Stack<>();
+		leftToRight.add(root);
+		while(!leftToRight.isEmpty()) {
+			Node<T> current = leftToRight.pop();
+			if(!Objects.isNull(current)) {
+				System.out.print(current);
+				rightToLeft.push(current.right);
+				rightToLeft.push(current.left);
+			}
+			if(leftToRight.isEmpty()) {
+				while(!rightToLeft.isEmpty()) {
+					current = rightToLeft.pop();
+					if(!Objects.isNull(current)) {
+						System.out.print(current);
+						leftToRight.push(current.left);
+						leftToRight.push(current.right);
+					}
+				}
+			}
 		}
 	}
 
@@ -121,6 +150,7 @@ public class BTree<T> {
 	}
 
 	public class Node<M> {
+		
 		private Node<M> left;
 		private Node<M> right;
 		private int key;
