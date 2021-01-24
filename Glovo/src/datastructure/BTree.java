@@ -1,5 +1,6 @@
 package datastructure;
 
+import java.util.EmptyStackException;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
@@ -29,8 +30,11 @@ public class BTree<T> {
 		bt.add(5, 9);
 		bt.print(Traversal.SPIRAL);
 //		System.out.println(bt.height());
-		System.out.println("Depth is : " + bt.depth(bt.getNode(71, 9)));
-		System.out.println("Level is : " + bt.level(bt.getNode(71, 9)));
+//		System.out.println("Depth is : " + bt.depth(bt.getNode(71, 9)));
+//		System.out.println("Level is : " + bt.level(bt.getNode(71, 9)));
+
+		System.out
+				.println("n/o nodes : " + bt.distanceBetweenNodes(bt.getRoot(), bt.getNode(71, 9), bt.getNode(13, 11)));
 
 	}
 
@@ -172,6 +176,8 @@ public class BTree<T> {
 	}
 
 	private int depth(int depth, Node<T> root, Node<T> node) {
+		if (Objects.isNull(root))
+			throw new EmptyStackException();
 		if (root.equals(node))
 			return depth;
 		if (node.key > root.key) {
@@ -182,6 +188,34 @@ public class BTree<T> {
 
 	public Node<T> getNode(int key, T data) {
 		return new Node<>(key, data);
+	}
+
+	public Node<T> getRoot() {
+		return root;
+	}
+
+	public int distanceBetweenNodes(Node<T> source, Node<T> node1, Node<T> node2) {
+		if (Objects.isNull(source)) {
+			return -1;
+		}
+		if (node1.equals(node2)) {
+			return 0;
+		}
+		Node<T> LCA = leastCommonAncestor(source, node1, node2);
+		try {
+			return depth(0, LCA, node1) + depth(0, LCA, node2) + 1;
+		} catch (EmptyStackException e) {
+			return -1;
+		}
+	}
+
+	private Node<T> leastCommonAncestor(Node<T> source, Node<T> node1, Node<T> node2) {
+		if (node1.key > source.key && node2.key > source.key)
+			return leastCommonAncestor(source.right, node1, node2);
+		else if (node1.key < source.key && node2.key < source.key)
+			return leastCommonAncestor(source.left, node1, node2);
+		else
+			return source;
 	}
 
 	public class Node<M> {
