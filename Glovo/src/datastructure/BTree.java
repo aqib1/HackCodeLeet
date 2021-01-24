@@ -28,7 +28,9 @@ public class BTree<T> {
 		bt.add(1, 11);
 		bt.add(5, 9);
 		bt.print(Traversal.SPIRAL);
-//		System.out.println(bt.width(3));
+//		System.out.println(bt.height());
+		System.out.println("Depth is : " + bt.depth(bt.getNode(71, 9)));
+		System.out.println("Level is : " + bt.level(bt.getNode(71, 9)));
 
 	}
 
@@ -56,17 +58,17 @@ public class BTree<T> {
 		Stack<Node<T>> leftToRight = new Stack<>();
 		Stack<Node<T>> rightToLeft = new Stack<>();
 		leftToRight.add(root);
-		while(!leftToRight.isEmpty()) {
+		while (!leftToRight.isEmpty()) {
 			Node<T> current = leftToRight.pop();
-			if(!Objects.isNull(current)) {
+			if (!Objects.isNull(current)) {
 				System.out.print(current);
 				rightToLeft.push(current.right);
 				rightToLeft.push(current.left);
 			}
-			if(leftToRight.isEmpty()) {
-				while(!rightToLeft.isEmpty()) {
+			if (leftToRight.isEmpty()) {
+				while (!rightToLeft.isEmpty()) {
 					current = rightToLeft.pop();
-					if(!Objects.isNull(current)) {
+					if (!Objects.isNull(current)) {
 						System.out.print(current);
 						leftToRight.push(current.left);
 						leftToRight.push(current.right);
@@ -149,8 +151,41 @@ public class BTree<T> {
 		root = new Node<>(key, data);
 	}
 
+	public int height() {
+		return height(root);
+	}
+
+	public int height(Node<T> node) {
+		if (Objects.isNull(node))
+			return -1;
+		int leftHeight = height(node.left);
+		int rightHeight = height(node.right);
+		return Math.max(leftHeight, rightHeight) + 1;
+	}
+
+	public int level(Node<T> node) {
+		return depth(node) + 1;
+	}
+
+	public int depth(Node<T> node) {
+		return depth(0, root, node);
+	}
+
+	private int depth(int depth, Node<T> root, Node<T> node) {
+		if (root.equals(node))
+			return depth;
+		if (node.key > root.key) {
+			return depth(++depth, root.right, node);
+		} else
+			return depth(++depth, root.left, node);
+	}
+
+	public Node<T> getNode(int key, T data) {
+		return new Node<>(key, data);
+	}
+
 	public class Node<M> {
-		
+
 		private Node<M> left;
 		private Node<M> right;
 		private int key;
