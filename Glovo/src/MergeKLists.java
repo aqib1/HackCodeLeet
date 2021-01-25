@@ -28,7 +28,7 @@ public class MergeKLists {
 	// 2->4>6>8
 	// 1>3>5>9
 	//
-	// O(k * log(N)) -> where k is
+	// O(k * log(N)) -> where k is number of parent nodes and N is the number of all nodes
 	public static Node mergeKLists(Node[] nodes, int k) {
 		Node head = null, last = null;
 		// O(logN)
