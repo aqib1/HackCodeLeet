@@ -158,6 +158,7 @@ public class MoviesOnFlight {
 		});
 		max_heap.addAll(pairList);
 		d -= 30;
+		//O(N) in worst case
 		while (!max_heap.isEmpty()) {
 			MoviePair pair = max_heap.poll();
 			if (pair.getSumDuration() <= d)

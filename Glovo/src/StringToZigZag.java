@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class StringToZigZag {
 
+	// O(N)
 	public static String convert(String s, int numRows) {
 		List<List<String>> data = new ArrayList<>();
 		for (int x = 0; x < numRows; x++) {

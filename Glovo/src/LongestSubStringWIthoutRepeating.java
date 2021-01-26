@@ -2,6 +2,7 @@ import java.util.Objects;
 
 public class LongestSubStringWIthoutRepeating {
 
+	// O(N)
 	public static int lengthOfLongestSubstring(String s) {
 		if (Objects.isNull(s) || s.isEmpty())
 			return 0;

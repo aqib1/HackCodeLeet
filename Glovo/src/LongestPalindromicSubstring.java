@@ -1,6 +1,7 @@
 
 public class LongestPalindromicSubstring {
 
+	// O(2K + N2) -> O(n)2
 	public static String longestPalindromicStringDP(String s) {
 		String lps = "";
 

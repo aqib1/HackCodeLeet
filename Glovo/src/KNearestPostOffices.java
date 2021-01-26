@@ -41,6 +41,7 @@ public class KNearestPostOffices {
 	 * the Euclidean distance between the office and you is SquareRoot((m - p) * (m
 	 * - p) + (n - q) * (n - q)).
 	 */
+	// O(N * Log(N)) + OLog(k) = O(NLog(N))
 	public static int[][] kNearestPostOffice(int[][] postOffices, int k) {
 		int[][] kNearestPosts = new int[k][2];
 
