@@ -208,7 +208,7 @@ public class BTree<T> {
 			return -1;
 		}
 	}
-
+	
 	private Node<T> leastCommonAncestor(Node<T> source, Node<T> node1, Node<T> node2) {
 		if (node1.key > source.key && node2.key > source.key)
 			return leastCommonAncestor(source.right, node1, node2);
