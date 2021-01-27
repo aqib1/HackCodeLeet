@@ -18,6 +18,6 @@ public class CostOfDividingChain {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(solution(new int[] { 5,2,4,6,3,7 }));
+		System.out.println(solution(new int[] { 5, 2, 4, 6, 3, 7 }));
 	}
 }

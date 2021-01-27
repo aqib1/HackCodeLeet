@@ -1,9 +1,10 @@
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class UniqueOccurenceOfNumbers {
 
@@ -12,19 +13,14 @@ public class UniqueOccurenceOfNumbers {
 			return 0;
 		}
 		int count = 0;
-
-		Map<Character, Integer> charToCount = new HashMap<>();
-		for (int x = 0; x < s.length(); x++) {
-			if (charToCount.containsKey(s.charAt(x))) {
-				charToCount.put(s.charAt(x), (charToCount.get(s.charAt(x)) + 1));
-			} else {
-				charToCount.put(s.charAt(x), 1);
-			}
-		}
-		Queue<Integer> max_heap = new PriorityQueue<>(charToCount.size(), Collections.reverseOrder());
+		Map<String, Long> charToCount =
+		s.chars().mapToObj(Character::toString)
+		.collect(Collectors.groupingBy(Function.identity() ,Collectors.counting()));
+		
+		Queue<Long> max_heap = new PriorityQueue<>(charToCount.size(), Collections.reverseOrder());
 		max_heap.addAll(charToCount.values());
 		while (!max_heap.isEmpty() && max_heap.peek() != 0) {
-			int current = max_heap.poll();
+			Long current = max_heap.poll();
 			if(max_heap.isEmpty())
 				break;
 			if (current == max_heap.peek()) {
