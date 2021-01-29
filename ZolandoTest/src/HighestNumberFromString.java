@@ -1,24 +1,25 @@
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class HighestNumberFromString {
 
 	public static int solution(String number) {
-		if (Objects.isNull(number) || number.length() == 0) {
+		if (Objects.isNull(number) || number.isEmpty()) {
 			return 0;
 		}
-		if(number.length() <=2)
+		if (number.length() <= 2)
 			return Integer.parseInt(number);
-		
-		int max_value = Integer.MIN_VALUE;
-		for (int x = 0; x < number.length() - 1; x++) {
-			max_value = Math.max(max_value, Integer.parseInt(number.substring(x, x + 2)));
-		}
-		return max_value;
+
+		return IntStream.range(0, number.length() - 1)
+					.map(val -> Integer.valueOf(number.substring(val, val + 2)))
+					.max()
+					.getAsInt();
 	}
 
 	public static void main(String[] args) {
-		System.out.println(solution("50552"));
+//		System.out.println("".compareTo("60"));
+		System.out.println(solution("50559"));
 		System.out.println(solution("10101"));
-		System.out.println(solution("88"));
+		System.out.println(solution("988"));
 	}
 }

@@ -16,16 +16,22 @@ public class LeastCommonAncestor {
 	static class BT<M> {
 
 		private Node<M> root;
-
+		
+		//O(h) where h is the height of binary tree
+		//In the case of balanced we will have O(LogN) where N is number of nodes
 		public int distanceBwNodes(Node<M> source, Node<M> n1, Node<M> n2) {
 			if(Objects.isNull(source))
 				return 0;
+			if(source.equals(n1) && source.equals(n2))
+				return 0;
+				
 			Node<M> lca = leastComonAnsc(source, n1, n2);
 			if(lca == null)
 				return 0;
 			return depth(lca, n1) + depth(lca, n2) + 1;
 		}
 		
+		//O(h) but in balanced one it will be O(LogN)
 		public Node<M> leastComonAnsc(Node<M> source, Node<M> n1, Node<M> n2) {
 			if (Objects.isNull(source))
 				return null;
@@ -38,6 +44,7 @@ public class LeastCommonAncestor {
 			}
 		}
 
+		// O(h)
 		public int height(Node<M> node) {
 			if (Objects.isNull(node))
 				return -1;
@@ -46,6 +53,7 @@ public class LeastCommonAncestor {
 			return Math.max(left, right) + 1;
 		}
 
+		// O(h)
 		public int level(Node<M> source, Node<M> node) {
 			return depth(source, node) + 1;
 		}
@@ -65,6 +73,7 @@ public class LeastCommonAncestor {
 				return depth(source.left, node, ++i);
 		}
 
+		//O(h)
 		public void add(Node<M> data) {
 			if (Objects.isNull(root)) {
 				addRoot(data);
@@ -85,6 +94,8 @@ public class LeastCommonAncestor {
 			}
 		}
 
+		//O(n) where n is the number of nodes
+		// space is o(n)
 		private void bfs(BT<M>.Node<M> root) {
 			Queue<Node<M>> queue = new LinkedList<>();
 			queue.add(root);
@@ -100,6 +111,8 @@ public class LeastCommonAncestor {
 			}
 		}
 
+		// O(n) where n is the number of nodes
+		// space is o(n)
 		private void zigZag(Node<M> root) {
 			Stack<Node<M>> leftToRight = new Stack<>();
 			Stack<Node<M>> rightToLeft = new Stack<>();
@@ -126,6 +139,7 @@ public class LeastCommonAncestor {
 		}
 
 		// N,L,R
+		// O(n) and space is O(n) [method calls on stack]
 		private void preOrder(BT<M>.Node<M> root) {
 			if (Objects.isNull(root))
 				return;
@@ -135,6 +149,7 @@ public class LeastCommonAncestor {
 		}
 
 		// L,R,N
+		// O(n) and space is O(n) [method calls on stack]
 		private void postOrder(BT<M>.Node<M> root) {
 			if (Objects.isNull(root))
 				return;
@@ -144,6 +159,7 @@ public class LeastCommonAncestor {
 		}
 
 		// L,N,R
+		// O(n) and space is O(n) [method calls on stack]
 		private void inOrder(BT<M>.Node<M> root) {
 			if (Objects.isNull(root))
 				return;
@@ -156,6 +172,7 @@ public class LeastCommonAncestor {
 			return root;
 		}
 
+		//O(h) in worst case
 		private void addChild(BT<M>.Node<M> root, BT<M>.Node<M> data) {
 			if (data.key < root.key) {
 				if (Objects.isNull(root.left)) {
