@@ -53,10 +53,35 @@ public class ReverseLinkedList {
 		return rev;
 	}
 
+	
+	// without recursion
+	public static ListNode normalReverse(ListNode li) {
+		ListNode reverse = null;
+		ListNode curr = li;
+		
+		while(!Objects.isNull(curr)) {
+			ListNode temp = curr.next;
+			curr.next = reverse;
+			reverse = curr;
+			curr = temp;
+		}
+		
+		return reverse;
+	}
+	
+	public static ListNode withRecursion(ListNode li) {
+		if(li == null || li.next == null)
+			return li;
+		ListNode last = withRecursion(li.next);
+		li.next.next = li;
+		li.next = null;
+		return last;
+	}
+	
 	public static void main(String[] args) {
 		ListNode li = new ListNode(2);
 		li.next = new ListNode(3);
 		li.next.next = new ListNode(4);
-		System.out.println(reverseRecursive(li));
+		System.out.println(withRecursion(li));
 	}
 }

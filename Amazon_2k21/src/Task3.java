@@ -39,4 +39,5 @@ public class Task3 {
 		}
 		return Math.max(res[0], Math.max(res[1], res[2]));
 	}
+
 }
