@@ -1,0 +1,47 @@
+- food delivery app
+- user -> can choose only one hotel 
+- N no of hotels -> 
+    -> menus -> foodselect -> orderplace
+
+- resturant will recive order -> accept 
+- when accept the order will be visible for all glovo delivery boys
+- marchant will assign to a person (? on the base of location (closest + vaila) ?)
+- 2nd way is to visible to all delivery guys and they will select
+- when they press ready [when food is cooked]-> then delivery boy will pick and
+deliver to client [notifiy delivery boy]
+- user will fimilier with all the phases of states of process -> {notification}
+- user can also live stream the location of delivery boy.
+- pyament -> (payment service with gateway+cod)
+- rider contact (Rider- information)
+
+- Estimation of User base
+- postal codes -> 100
+- resturants per postal code -> 20
+- dishes per resturant -> 15 
+- total record of dishes = 15 x 20 X 100 = 30,000
+
+- user base no of requests = 500 * 2 = 1000 * 100 = 100k
+
+
+User-base:
+1) Client
+2) Delivery boy
+3) Marchant (hotel)
+4) Glovo admin (employees of glovo)
+
+Services:
+1) ResturantSearchService -> nosql, cassendra
+2) ResturantProfileService -> nosql
+3) OrderService -> RDMS, posgresql/mysql
+4) DilveryDispatcherService
+5) OrderFullfilmentService
+6) PaymentService
+7) DilveryProfileService
+8) NotificationService
+9) UserProfileService
+10)UserPreferenceService
+
+
+80 20 rule cache
+70 30 rule cache
+
