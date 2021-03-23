@@ -1,14 +1,33 @@
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.PriorityQueue;
+import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class MinimumUniqueArraySum {
 	public static void main(String[] args) {
-		System.out.println(getMinimumUniqueSum(new int [] {3, 4, 6, 8}));
+		System.out.println(getMinimumUniqueSumBetter(new int [] {3, 2, 1, 2, 7}));
 		
 		// 1 + 2 + 3 + 8 + 7 = 21 
 	}
+	
+	public static int getMinimumUniqueSumBetter(int [] arr) {
+		if(Objects.isNull(arr) || arr.length == 0)
+			return 0;
+		Set<Integer> set = new HashSet<>();
+		IntStream.range(0, arr.length).forEach(x -> {
+			int currValue = arr[x];
+			while(set.contains(currValue)) {
+				++currValue;
+			}
+			set.add(currValue);
+		});
+		
+		return set.stream().reduce(0, Integer::sum);
+	}
+	
 	public static int getMinimumUniqueSum(int [] arr) {
 		if(Objects.isNull(arr) || arr.length == 0)
 			return 0;
