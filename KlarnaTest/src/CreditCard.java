@@ -12,6 +12,7 @@ public class CreditCard {
 		if (validCardExists(creditCardNumber)) {
 			return creditCardNumber;
 		}
+		// space O(n) and time O(n)
 		StringBuilder sb = getStringBuilder(getSubstring(creditCardNumber, FIRST_ELEMENT, SECOND_ELEMENT));
 		int maskedLimit = creditCardNumber.length() - FOUR;
 		for (int x = 1; x < maskedLimit; x++) {
@@ -38,7 +39,8 @@ public class CreditCard {
 			sb.append(param);
 		return sb;
 	}
-
+	
+	
 	public static void main(String[] args) {
 		System.out.println(maskify("4556364607935616"));
 		System.out.println(maskify("4556-3646-0793-5616"));
