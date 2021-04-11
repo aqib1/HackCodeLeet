@@ -22,7 +22,7 @@ class Account implements OnlineAccount, Comparable<Account> {
 
     // 2. This method returns the monthly cost for the account.
     public int monthlyCost() {
-        return basePrice + (noOfRegularMovies*regularMoviePrice) +        (noOfExclusiveMovies*exclusiveMoviePrice);
+        return basePrice + (noOfRegularMovies*regularMoviePrice) + (noOfExclusiveMovies*exclusiveMoviePrice);
     }
 
     // 3. Override the compareTo method of the Comparable interface such that two accounts can be compared based on their monthly cost.
