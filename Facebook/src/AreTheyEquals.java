@@ -26,6 +26,6 @@ public class AreTheyEquals {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(areTheyEqual(new int[] { 2, 1, 1 }, new int[] { 1, 2, 1 }));
+		System.out.println(areTheyEqual(new int[] { 2, 2, 1 }, new int[] { 1, 2, 1 }));
 	}
 }
