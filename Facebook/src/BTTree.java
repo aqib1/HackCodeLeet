@@ -14,6 +14,55 @@ enum Traverse {
 public class BTTree<T> {
 	private Node<T> root;
 
+	public int maxNodesByH() {
+		return (int) Math.pow(2, height() + 1) - 1;
+	}
+	
+	public int minNodesByH() {
+		return height() + 1;
+	}
+
+	public int minHByNodes(int nodes) {
+		return log2(nodes);
+	}
+
+	public int maxHByNodes(int nodes) {
+		return nodes - 1;
+	}
+
+	public int maxW() {
+		int MAX_WIDTH = Integer.MIN_VALUE;
+		int levels = h();
+		for (int level = 1; level <= levels; level++) {
+			MAX_WIDTH = Math.max(MAX_WIDTH, w(level));
+		}
+		return MAX_WIDTH;
+	}
+
+	public int w(int level) {
+		return w(root, level);
+	}
+
+	private int w(Node<T> root, int level) {
+		if (root == null)
+			return 0;
+		if (level == 1)
+			return 1;
+		if (level > 1)
+			return w(root.left, level - 1) + w(root.right, level - 1);
+		return 0;
+	}
+
+	public int h() {
+		return h(root);
+	}
+
+	private int h(Node<T> root) {
+		if (root == null)
+			return -1;
+		return Math.max(h(root.left), h(root.right)) + 1;
+	}
+
 	public void add(int key, T data) {
 		if (Objects.isNull(root))
 			root = new Node<>(key, data);
@@ -128,45 +177,46 @@ public class BTTree<T> {
 		postOrder(root.right);
 		System.out.println(root.key + " = " + root.data);
 	}
-	
+
 	public int maxWidthByLevel() {
 		int height = height();
 		int maxWidth = -1;
-		for(int level = 1; level <= height; level++) {
+		for (int level = 1; level <= height; level++) {
 			maxWidth = Math.max(maxWidth, width(level));
 		}
 		return maxWidth;
 	}
+
 	public int width(int level) {
 		return width(root, level);
 	}
 
 	private int width(Node<T> root, int level) {
-		if(Objects.isNull(root))
+		if (Objects.isNull(root))
 			return 0;
-		if(level == 1)
+		if (level == 1)
 			return 1;
-		if(level > 1)
-			return width(root.left , level - 1) + width(root.right, level - 1);
+		if (level > 1)
+			return width(root.left, level - 1) + width(root.right, level - 1);
 		return 0;
 	}
 
 	public int maxHeightByNodes(int nodes) {
 		return nodes - 1;
 	}
-	
-	public int minNodesByHeight() { 
+
+	public int minNodesByHeight() {
 		return height() + 1;
 	}
-	
+
 	public int maxNodesByHeight() {
 		return (int) Math.pow(2, height() + 1) - 1;
 	}
-	
+
 	public int minHeightByNodes(int nodes) {
 		return log2(nodes);
 	}
-	
+
 	private int log2(int nodes) {
 		return (int) (Math.log(nodes) / Math.log(2));
 	}
@@ -174,13 +224,13 @@ public class BTTree<T> {
 	public int height() {
 		return height(root);
 	}
-	
+
 	private int height(Node<T> root) {
-		if(Objects.isNull(root))
+		if (Objects.isNull(root))
 			return -1;
 		return Math.max(height(root.left), height(root.right)) + 1;
 	}
-	
+
 	public class Node<M> {
 		private Node<M> left;
 		private Node<M> right;
@@ -237,11 +287,11 @@ public class BTTree<T> {
 		}
 
 	}
-	
+
 	public int numberOfVisibleLeftNodes() {
 		return height() + 1;
 	}
-	
+
 	public static void main(String[] args) {
 		BTTree<Integer> bt = new BTTree<>();
 		bt.add(7, 7);
@@ -253,11 +303,21 @@ public class BTTree<T> {
 		bt.add(9, 9);
 		bt.add(12, 12);
 //		bt.print(Traverse.ZIGZAG);
+//		System.out.println(bt.h());
 //		System.out.println(bt.height());
 //		System.out.println(bt.maxWidthByLevel());
-		System.out.println(bt.minNodesByHeight());
-		System.out.println(bt.minHeightByNodes(5));
-//		System.out.println(bt.width(2));
+//		System.out.println(bt.maxW());
+//		System.out.println(bt.minNodesByHeight());
+//		System.out.println(bt.minHeightByNodes(5));
+//		System.out.println(bt.minHByNodes(5));
+//		System.out.println(bt.minHeightByNodes(5));
+//		System.out.println(bt.width(4));
+//		System.out.println(bt.w(4));
 //		System.out.println(bt.maxNodesByHeight());
+//		System.out.println(bt.maxNodesByH());
+//		System.out.println(bt.maxHeightByNodes(5));
+//		System.out.println(bt.maxHByNodes(5));
+//		System.out.println(bt.minNodesByH());
+//		System.out.println(bt.minNodesByHeight());
 	}
 }
