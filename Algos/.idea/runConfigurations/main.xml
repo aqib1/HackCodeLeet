@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="main" type="Java Scratch">
+    <module name="Algos" />
+    <option name="SCRATCH_FILE_URL" value="file://$PROJECT_DIR$/src/TrappingWater.java" />
+    <shortenClasspath name="NONE" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
