@@ -3,6 +3,8 @@ import java.util.stream.IntStream;
 
 public class MainClass {
 
+    private int sum;
+
     public static int solution2(String S, String C) {
         if(Objects.isNull(S) || Objects.isNull(C) || S.isBlank() || C.isBlank())
             return -1;
@@ -58,7 +60,31 @@ public class MainClass {
 
         return iteration;
     }
-    public static void main(String[] args) {
-        System.out.println(solution2("id,name,age,act.,room,dep.\n1,Jack,68,T,13,8\n17,Betty,28,F,15,7" , "age"));
+
+    // 10, -10, -1, -1, 1, 1
+    public static int solution3(int [] A) {
+        if(Objects.isNull(A) || A.length == 0)
+            return 0;
+        Queue<Integer> minHeap = new PriorityQueue<>();
+        int sum = 0;
+        int iteration = 0;
+        for (int j : A) {
+            if (j < 0) minHeap.offer(j);
+            if (sum + j < 0 && !minHeap.isEmpty()) {
+                sum += -1 * minHeap.poll();
+                ++iteration;
+            }
+            if(sum + j >= 0) sum += j;
+        }
+        return iteration;
     }
+
+    public static void main(String[] args) {
+        System.out.println(solution3(new int[] {1, 2, 5, -9, -1 }));
+        //System.out.println(solution2("id,name,age,act.,room,dep.\n1,Jack,68,T,13,8\n17,Betty,28,F,15,7" , "age"));
+    }
+
+
+
 }
+
