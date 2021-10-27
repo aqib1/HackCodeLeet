@@ -6,7 +6,7 @@ public class MainClass {
     private int sum;
 
     public static int solution2(String S, String C) {
-        if(Objects.isNull(S) || Objects.isNull(C) || S.isBlank() || C.isBlank())
+        if(Objects.isNull(S) || Objects.isNull(C) || S.isEmpty() || C.isEmpty())
             return -1;
 
         Map<String, List<String>> data = new HashMap<>();
@@ -33,45 +33,25 @@ public class MainClass {
         });
 
         try {
-            return data.get(C)
+            return data.getOrDefault(C, new ArrayList<>())
                     .stream()
                     .map(Integer::parseInt)
                     .max(Integer::compareTo)
                     .orElseGet(() -> -1);
         } catch (NumberFormatException e) {return  -1;}
     }
-    public static int solution(int [] A) {
-        if(Objects.isNull(A) || A.length == 0)
-            return 0;
-        int iteration = 0;
-        Queue<Integer> minHeap = new PriorityQueue<>();
-        int sum = 0;
-        for(int x=0; x< A.length; x++) {
-                if(A[x] < 0)  minHeap.offer(A[x]);
-                if(x < 1 && sum + A[x] < 0 && !minHeap.isEmpty()) {
-                    iteration++; minHeap.poll();
-                }
-                if(x > 0 && sum + A[x] < 0 && !minHeap.isEmpty()) {
-                   sum =+ -1 *  minHeap.poll();
-                    iteration++;
-                }
-                sum += A[x];
-        }
-
-        return iteration;
-    }
 
     // 10, -10, -1, -1, 1, 1
     public static int solution3(int [] A) {
         if(Objects.isNull(A) || A.length == 0)
             return 0;
-        Queue<Integer> minHeap = new PriorityQueue<>();
+        Queue<Integer> minPriority = new PriorityQueue<>();
         int sum = 0;
         int iteration = 0;
         for (int j : A) {
-            if (j < 0) minHeap.offer(j);
-            if (sum + j < 0 && !minHeap.isEmpty()) {
-                sum += -1 * minHeap.poll();
+            if (j < 0) minPriority.offer(j);
+            if (sum + j < 0 && !minPriority.isEmpty()) {
+                sum += -1 * minPriority.poll();
                 ++iteration;
             }
             if(sum + j >= 0) sum += j;
@@ -80,8 +60,8 @@ public class MainClass {
     }
 
     public static void main(String[] args) {
-        System.out.println(solution3(new int[] {1, 2, 5, -9, -1 }));
-        //System.out.println(solution2("id,name,age,act.,room,dep.\n1,Jack,68,T,13,8\n17,Betty,28,F,15,7" , "age"));
+        //System.out.println(solution3(new int[] {5,5,-10,-1,2}));
+        System.out.println(solution2("id,name,age,act.,room,dep.\n1,Jack,68,T,13,8\n17,Betty,28,F,15,7" , "abc"));
     }
 
 
