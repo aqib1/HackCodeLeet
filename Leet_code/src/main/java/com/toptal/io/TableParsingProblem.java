@@ -12,7 +12,7 @@ public class TableParsingProblem {
     private static final int INVALID_INPUT_RESPONSE = -1;
     private static final int ZERO = 0;
 
-    // O(1) as map is constant time datastructure
+    // O(1) as map is constant time datastructures
     public static int solution(String S, String C) {
         if (Objects.isNull(S) || Objects.isNull(C) || S.isBlank() || C.isBlank())
             return INVALID_INPUT_RESPONSE;
@@ -23,7 +23,7 @@ public class TableParsingProblem {
                     .stream()
                     .map(Integer::parseInt)
                     .max(Integer::compareTo)
-                    .orElseGet(() -> INVALID_INPUT_RESPONSE);
+                    .orElse(INVALID_INPUT_RESPONSE);
         } catch (NumberFormatException e) {
             return INVALID_INPUT_RESPONSE;
         }

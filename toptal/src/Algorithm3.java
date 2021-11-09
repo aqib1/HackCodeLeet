@@ -7,10 +7,10 @@ public class Algorithm3 {
     public static void main(String[] args) {
 
         char[][] board1 = new char[][]{
-                {'.', '.', 'X', '.', '.'},
-                {'X', '.', '.', '.', '.'},
-                {'.', '.', '.', '.', '.'},
-                {'.', '.', '.', '.', '.'},
+                {'.','.','.','.','X','.','.'},
+                {'X','.','.','.','.','.','.'},
+                {'.','.','.','.','.','X','.'},
+                {'.','.','.','.','.','.','.'},
         };
 
         System.out.println(solve(board1));
@@ -21,6 +21,8 @@ public class Algorithm3 {
         dfs(board, 0, 0, 0, visitedNodes);
         return itemNodes.size();
     }
+
+
 
     private static void movement(char[][] board, int x, int y, int direction, Map<String, Boolean> visitedNodes) {
         Item item = new Item(x, y);
@@ -36,6 +38,10 @@ public class Algorithm3 {
         }
     }
 
+    ///0 -> right
+    // 1 -> down
+    // 2 -> left
+    // 3 -> up
     private static void clockWiseMovement(char[][] board, int x, int y, int direction, Map<String, Boolean> visitedNodes) {
         if (direction == directions[0]) {
             dfs(board, x, y - 1, 1, visitedNodes);
@@ -53,6 +59,7 @@ public class Algorithm3 {
         if (visitedNodes.containsKey(key)) {
             return;
         }
+
         if (x == board.length || x == -1 || y == -1 || y == board[0].length) {
             if (x == board.length) {
                 dfs(board, x - 1, y, 2, visitedNodes);
