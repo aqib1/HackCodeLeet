@@ -10,7 +10,9 @@ public class TableParsingProblem {
     private static final int COLUMN_INDEX = 0;
     private static final int VALUES_INDEX_START = 1;
     private static final int INVALID_INPUT_RESPONSE = -1;
+    private static final int ZERO = 0;
 
+    // O(1) as map is constant time datastructure
     public static int solution(String S, String C) {
         if (Objects.isNull(S) || Objects.isNull(C) || S.isBlank() || C.isBlank())
             return INVALID_INPUT_RESPONSE;
@@ -27,6 +29,7 @@ public class TableParsingProblem {
         }
     }
 
+    // O(N) where N is the numbers of column
     private static Map<String, List<String>> parseRawDataByColumn(String S) {
         Map<String, List<String>> valuesByColumn = new HashMap<>();
         String[] rawData = S.split(NEWLINE_SPLITTER);
@@ -42,6 +45,7 @@ public class TableParsingProblem {
         return valuesByColumn;
     }
 
+    // O(M*N) where M is the number of rows and N is the number for column
     private static void parseValuesInColumn(String[] rawData, Map<String, List<String>> valuesByColumn, String[] columns) {
         IntStream.range(VALUES_INDEX_START, rawData.length).forEach(rowIndex -> {
             int valueIndex = 0;
@@ -54,6 +58,6 @@ public class TableParsingProblem {
     }
 
     private static boolean notEmptyArray(String[] array) {
-        return array.length != 0;
+        return array.length != ZERO;
     }
 }
