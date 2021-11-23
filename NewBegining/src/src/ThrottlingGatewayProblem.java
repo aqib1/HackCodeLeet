@@ -19,10 +19,13 @@ public class ThrottlingGatewayProblem {
         for(int noOfRequests = 0; noOfRequests < requestTimeArr.length; noOfRequests++) {
             // case 1- when we have to limit only 3 request in first second
             if(noOfRequests > 2 && requestTimeArr[noOfRequests] == requestTimeArr[noOfRequests - 3]) {
+                System.out.println(requestTimeArr[noOfRequests]);
                 ++dropped;
             } else if (noOfRequests > 19 && (requestTimeArr[noOfRequests] - requestTimeArr[noOfRequests - 20]) < 10) {
+                System.out.println(requestTimeArr[noOfRequests]);
                 ++dropped;
             } else if (noOfRequests > 59 && (requestTimeArr[noOfRequests] - requestTimeArr[noOfRequests - 60]) < 60) {
+                System.out.println(requestTimeArr[noOfRequests]);
                 ++dropped;
             }
         }
