@@ -1,11 +1,27 @@
-import java.util.Arrays;
 import java.util.Objects;
 
 public class ElementaryDataStructures {
 
     public static void main(String[] args) {
-        System.out.println(findByBinarySearch(new int[]{1, 2, 3},
+        System.out.println(findByBinarySearchRecursive(new int[] {1, 2, 3, 4},
                 2));
+    }
+
+    public static int findByBinarySearchRecursive(int[] data, int value) {
+        return findByBinarySearchRecursive(0, data.length, data, value);
+    }
+
+    public static int findByBinarySearchRecursive(int start, int end, int[] data, int value) {
+        if (start > end) return -1;
+        else {
+            int mid = (start + end) / 2;
+            if (data[mid] == value) return mid;
+
+            if (data[mid] < value)
+                return findByBinarySearchRecursive(mid + 1, end, data, value);
+            else
+                return findByBinarySearchRecursive(start, mid - 1, data, value);
+        }
     }
 
     // Binary search is a searching algorithm to find element from
@@ -16,17 +32,19 @@ public class ElementaryDataStructures {
             return 0;
         int start = 0;
         int end = data.length;
-        int mid = (start + end) / 2;
 
-        while (data[mid] != value) {
+        while (start <= end) {
+            int mid = (start + end) / 2;
+            if (data[mid] == value) return mid;
+
             if (data[mid] > value) {
                 end = mid - 1;
             } else {
                 start = mid + 1;
             }
-            mid = (start + end) / 2;
+
         }
-        return mid;
+        return -1;
     }
 
     public static int[] merge(int[] nums1, int[] nums2) {
