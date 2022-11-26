@@ -1,5 +1,33 @@
+import java.util.Arrays;
+import java.util.Objects;
+
 public class ElementaryDataStructures {
 
+    public static void main(String[] args) {
+        System.out.println(findByBinarySearch(new int[]{1, 2, 3},
+                2));
+    }
+
+    // Binary search is a searching algorithm to find element from
+    // sorted array/data-structure. Time complexity is Log(n)
+    // Iterative approach
+    public static int findByBinarySearch(int[] data, int value) {
+        if (Objects.isNull(data) || data.length == 0)
+            return 0;
+        int start = 0;
+        int end = data.length;
+        int mid = (start + end) / 2;
+
+        while (data[mid] != value) {
+            if (data[mid] > value) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+            mid = (start + end) / 2;
+        }
+        return mid;
+    }
 
     public static int[] merge(int[] nums1, int[] nums2) {
         int[] merge = new int[nums1.length + nums2.length];
