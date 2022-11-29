@@ -1,4 +1,4 @@
-import java.util.Objects;
+import java.util.*;
 
 class ListNode {
     int val;
@@ -46,4 +46,28 @@ public class MergeTwoLists {
 
         return result.next;
     }
+
+    public ListNode mergeKLists(ListNode[] lists) {
+        if(Objects.isNull(lists) || lists.length == 0) return null;
+        var merge = new ListNode();
+        var result = merge;
+        // default implementation is already min heap
+        Queue<ListNode> minHeap = new PriorityQueue<>(Comparator.comparingInt(n -> n.val));
+        Arrays.stream(lists)
+                .filter(Objects::nonNull)
+                .forEach(minHeap::offer);
+
+        while(!minHeap.isEmpty()) {
+            ListNode current = minHeap.remove();
+            merge.next = current;
+            merge = merge.next;
+            if (!Objects.isNull(current.next)) {
+                minHeap.offer(current.next);
+            }
+
+        }
+
+        return result.next;
+    }
+
 }
