@@ -47,6 +47,8 @@ public class MergeTwoLists {
         return result.next;
     }
 
+    // Space complexity is O(KxN) where K x N = total number of nodes.
+    // Time complexity is OKxN(LogK)
     public ListNode mergeKLists(ListNode[] lists) {
         if(Objects.isNull(lists) || lists.length == 0) return null;
         var merge = new ListNode();
