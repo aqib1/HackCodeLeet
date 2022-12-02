@@ -2,10 +2,53 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Stack;
-import java.util.stream.IntStream;
 
 public class MonotonicStack {
 
+    // 534976
+    // Leetcode : https://leetcode.com/problems/next-greater-element-iii/description/
+    public static int nextGreaterNumberIII(int number) {
+        char []numbers = String.valueOf(number).toCharArray();
+        // Step - 1: to find next Greater number of a given number n
+        // Iterate from right and find first number n1 which is smaller
+        // than to its next number n2
+        int indexOfNum = -1;
+        for(int i = numbers.length - 1; i > 0; i--) {
+            if((int)numbers[i - 1] < (int)numbers[i]) {
+                indexOfNum = i - 1;
+                break;
+            }
+        }
+
+        // Step - 2: if we found indexOfNum is 0 its mean that number is in descending order
+        // e.g. 54321 in that case there will be no next greater number having same
+        // numbers, so we will return -1
+        if(indexOfNum == -1) return -1;
+
+        // Step - 3: now we need to iterate from indexOfNum to right side
+        // and need to find number greater than numbers[indexOfNum] but smaller
+        // than all other numbers on right side
+        int smallestFirstNumber = Integer.parseInt(String.valueOf(numbers[indexOfNum]));
+        int smallestNextNumber = Integer.MAX_VALUE;
+        int nextIndex = indexOfNum;
+        for(int indexOfSmallest = indexOfNum + 1; indexOfSmallest < numbers.length; indexOfSmallest++) {
+            int nextNumber = Integer.parseInt(String.valueOf(numbers[indexOfSmallest]));
+            if(nextNumber > smallestFirstNumber && nextNumber < smallestNextNumber) {
+                smallestNextNumber = nextNumber;
+                nextIndex = indexOfSmallest;
+            }
+        }
+        // Step - 4: replace both numbers
+        char num1 = numbers[indexOfNum];
+        numbers[indexOfNum] = numbers[nextIndex];
+        numbers[nextIndex] = num1;
+
+        // Step - 5: Sort Array after indexOfNum
+        Arrays.sort(numbers, indexOfNum + 1, numbers.length);
+
+        long val = Long.parseLong(new String(numbers));
+        return (val <= Integer.MAX_VALUE) ? (int) val : -1;
+    }
 
     // Leetcode : https://leetcode.com/problems/next-greater-element-ii/description/
     // Approach Monotonic stacks
@@ -63,8 +106,10 @@ public class MonotonicStack {
     }
 
     public static void main(String[] args) {
+
+//        Bag<Double> d = new Bag<Double>();
         System.out.println(
-                Arrays.toString(nextGreaterElements(new int[]{5,4,3,2,1}))
+                nextGreaterNumberIII(12443322)
         );
     }
 }
