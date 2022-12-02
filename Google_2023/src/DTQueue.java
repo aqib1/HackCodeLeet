@@ -47,6 +47,10 @@ public class DTQueue<T> {
         }
     }
 
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("{ ");
@@ -65,10 +69,12 @@ public class DTQueue<T> {
         dtQueue.enqueue(2);
         dtQueue.enqueue(3);
         System.out.println(dtQueue);
+        System.out.println(dtQueue.isEmpty());
         System.out.println(dtQueue.dequeue());
         System.out.println(dtQueue.dequeue());
         System.out.println(dtQueue.dequeue());
 //        System.out.println(dtQueue.dequeue());
+        System.out.println(dtQueue.isEmpty());
         System.out.println(dtQueue);
     }
 }
