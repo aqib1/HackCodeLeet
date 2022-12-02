@@ -1,7 +1,4 @@
-import java.util.Iterator;
-import java.util.ListIterator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 
 public class DTStack<T> implements Iterable<T> {
     private T value;
@@ -29,6 +26,7 @@ public class DTStack<T> implements Iterable<T> {
     }
 
     public T pop() {
+        if(size == 0) throw new EmptyStackException();
         T value = this.value;
         this.previous = this.previous.previous;
         size--;
@@ -123,6 +121,8 @@ public class DTStack<T> implements Iterable<T> {
         for (Integer integer : dtStack) {
             System.out.println(integer);
         }
+
+        System.out.println("POP -> " + dtStack.pop());
 
         for (Integer integer : dtStack) {
             System.out.println(integer);
