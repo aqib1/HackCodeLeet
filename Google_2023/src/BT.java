@@ -138,11 +138,12 @@ public class BT<V> {
     }
 
     public static void main(String[] args) {
-        BT<String> bt = new BT<>();
-        bt.put(5, "Aqib");
-        bt.put(3, "Ali");
-        bt.put(6, "Ahmad");
-        bt.put(4, "Fahad");
-        bt.bfs();
+//        BT<String> bt = new BT<>();
+//        bt.put(5, "Aqib");
+//        bt.put(3, "Ali");
+//        bt.put(6, "Ahmad");
+//        bt.put(4, "Fahad");
+//        bt.bfs();
+
     }
 }
