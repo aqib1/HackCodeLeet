@@ -28,6 +28,7 @@ public class DTQueue<T> {
         return value;
     }
 
+    //O(1)
     public T dequeue() {
         if(size == 0) throw new NoSuchElementException("Queue is empty");
 
@@ -37,6 +38,7 @@ public class DTQueue<T> {
         return first;
     }
 
+    // O(1)
     private void addElement(T value) {
         DTQueue<T> queue = new DTQueue<>(value);
         if(Objects.isNull(head)) {
@@ -47,10 +49,12 @@ public class DTQueue<T> {
         }
     }
 
+    // O(1)
     public boolean isEmpty() {
         return size == 0;
     }
 
+    // O(N)
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("{ ");

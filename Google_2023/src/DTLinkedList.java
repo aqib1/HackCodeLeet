@@ -14,6 +14,7 @@ public class DTLinkedList<T> {
         return value;
     }
 
+    // O(1)
     public T pop() {
         if(size == 0) throw new NoSuchElementException("LinkedList is empty");
         T value = this.current.value;
@@ -23,6 +24,7 @@ public class DTLinkedList<T> {
         return value;
     }
 
+    // O(N)
     public T delete(T value) {
         if(size == 0) throw new NoSuchElementException("LinkedList is empty");
         Node<T> pointer = this.current;
@@ -35,7 +37,6 @@ public class DTLinkedList<T> {
         return value;
     }
 
-    // 3 2 1
     private void delete(Node<T> pointer) {
         if(Objects.isNull(pointer.next)) {
             this.current = this.current.previous;
@@ -48,6 +49,7 @@ public class DTLinkedList<T> {
         }
     }
 
+    // O(1)
     private void addElement(T value) {
         Node<T> node = new Node<>(value);
         if(Objects.isNull(current)) {
@@ -59,10 +61,12 @@ public class DTLinkedList<T> {
         }
     }
 
+    // O(1)
     public boolean isEmpty() {
         return size == 0;
     }
 
+    // O(N)
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("{ ");
