@@ -15,11 +15,13 @@ public class DSLists {
             size = 0;
         }
 
+        // O(1)
         public T get(int index) {
             Objects.checkIndex(index, size);
             return table[index];
         }
 
+        // O(1)
         public T add(T element, int index) {
             Objects.checkIndex(index, size);
             T oldValue = table[index];
@@ -27,6 +29,7 @@ public class DSLists {
             return oldValue;
         }
 
+        // O(N)
         public void removeAt(int index) {
             Objects.checkIndex(index, size);
             final int newSize;
@@ -41,6 +44,7 @@ public class DSLists {
             table[size = newSize] = null;
         }
 
+        // O(1)
         public void add(T element) {
             if (size >= capacity) {
                 resize();
@@ -48,15 +52,18 @@ public class DSLists {
             table[size++] = element;
         }
 
+        // O(N)
         private void resize() {
             capacity += capacity >> 1;
             table = Arrays.copyOf(table, capacity);
         }
 
+        // O(1)
         public int getSize() {
             return size;
         }
 
+        // O(1)
         public int getCapacity() {
             return capacity;
         }
