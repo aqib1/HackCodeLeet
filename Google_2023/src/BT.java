@@ -9,13 +9,33 @@ public class BT<V> {
 
     }
 
-    // O(Log N)
+    // O(Log N) and in worst case it will be O(h) where h is the height of BT
     public void put(Integer key, V value) {
         if(Objects.isNull(root)) {
             this.root = new Node<>(key, value);
         } else {
             put(key, value, root);
         }
+    }
+
+    // O(Log N) and in worst case it will be O(h) where h is the height of BT
+    public Node<V> get(Integer key) {
+        return get(this.root, key);
+    }
+
+
+    // O(Log N) and in worst case it will be O(h) where h is the height if BT
+    public Node<V> min() {
+
+        return null;
+    }
+
+    private Node<V> get(Node<V> root, Integer key) {
+        if(Objects.isNull(root)) return null;
+        if(Objects.equals(root.getKey(), key)) return root;
+
+        if(key < root.getKey()) return get(root.left, key);
+        else return get(root.right, key);
     }
 
     private void put(Integer key, V value, Node<V> root) {
@@ -33,6 +53,9 @@ public class BT<V> {
             }
         }
     }
+
+    // O(1)
+    public Node<V> peek() {return this.root;}
 
     // BFS (Breath first Search) O(N) where N are the number of nodes.
     public void bfs() {
@@ -135,15 +158,24 @@ public class BT<V> {
         public void setRight(Node<V> right) {
             this.right = right;
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder("Node{");
+            sb.append("key=").append(key);
+            sb.append(", value=").append(value);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
     public static void main(String[] args) {
-//        BT<String> bt = new BT<>();
-//        bt.put(5, "Aqib");
-//        bt.put(3, "Ali");
-//        bt.put(6, "Ahmad");
-//        bt.put(4, "Fahad");
+        BT<String> bt = new BT<>();
+        bt.put(5, "Aqib");
+        bt.put(3, "Ali");
+        bt.put(6, "Ahmad");
+        bt.put(4, "Fahad");
 //        bt.bfs();
-
+        System.out.println(bt.get(16));
     }
 }
