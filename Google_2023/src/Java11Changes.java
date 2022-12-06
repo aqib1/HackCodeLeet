@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -88,6 +91,51 @@ public class Java11Changes {
 //        System.out.println(dtf.format(LocalTime.of(20,10)));
 
 
+
+
+        // Java 8 changes
+        /**
+         * 1- forEach support in Iterator
+         * 2- Functional Interfaces
+         * 3- static and default methods in interface
+         * 4- Stream API
+         * 5- Lambda expression
+         * 6- Collection update with support of stream
+         * 7- Concurrent API improvements (newStealingThreadPool)
+         * 8- IO updates (Files.list, Files.lines)
+         * 9- DateTimeApi
+         * **/
+
+        // java 11
+        /**
+         * 1- Applet Tool Viewer removed
+         * 2- JWTUtilities removed
+         * 3- JMC and JavaFX removed from JDK 11
+         * 4- CMS deprecated and G1GC is default
+         * 5- ZGC, Shenandoah GC and No-Opt GC
+         * 6- String class with methods isBlank, repeat, lines, strip, stripLeading, stripTrailing and stripIndent
+         * 7- Files updated with Files.readString, Files.writeString and Files.isSameFiles
+         * 8- Modularity support from java 9
+         * 9- var from jdk 10 enhanced by adding support in Lambda
+         * 10- Patterns updated with method isMatchedPredicate
+         * 11- multi-jar support most important which make you able to add code from different versions of java
+         * */
+
+        // java 17
+        /**
+         * 1- Text Block
+         * 2- Switch update with yield and return
+         * 3- Records (Just like case classes of scala)
+         * 4- sealed, non-sealed & permits
+         * 5- Pattern matching of instanceof with auto casting
+         * 6- NumberFormat with human-readable formats
+         * 7- DateTimeFormat "B" to support day periods
+         * 8- Improved NullPointerExceptions with more detailed trace
+         * 9- Stream toList to improve toCollect verbose
+         * */
+
+
+
         // Java 8
         /**
          * 1- forEach introduced in iterator
@@ -130,5 +178,44 @@ public class Java11Changes {
 
 
 
+        // How to calculate number of threads needed for a thread pool
+
+        /**
+         *
+         * thread = No of available cores * target CPU utilization
+         * x (1 + wait time / service time)
+         * */
+
+        
+        List<Integer> li = new ArrayList<>();
+        li.add(1);
+        Iterator<Integer> it = li.iterator();
+        while(it.hasNext()) {
+            System.out.println(it.next());
+
+            li.add(23);
+        }
+
     }
+
+    // Optimistic locking
+
+    /**
+     * Optimistic locking:
+     * In optimistic locking we do not lock our data for read and write
+     * but we use versioning or timestamping to validate any dirty read
+     * while any other request are updating the same data. whenever read
+     * happen, request store timestamp read from database and before updating
+     * the value it checks again timestamp if any other request updated that or not
+     * . if so request discard this change or re-read.
+     * We us optimistic locking in read intensive applications where we know
+     * that application will have more read requests as compared to write requests.
+     *
+     * Pessimistic locking:
+     * Pessimistic locking in when we do not allow any other transaction on
+     * our data when one transaction is in progress. In this we will strictly apply
+     * lock until one transaction finished. In java pessimistic locking can be achieved
+     * with synchronization or locks.
+     * Pessimistic locking used in write intensive application
+     * */
 }
