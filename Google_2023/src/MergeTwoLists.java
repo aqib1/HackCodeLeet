@@ -1,23 +1,5 @@
 import java.util.*;
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-
-    }
-
-    ListNode(int val) {
-        this(val, null);
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-}
-
 public class MergeTwoLists {
 
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
