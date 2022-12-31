@@ -1,5 +1,7 @@
 public class RangeSumOfBST {
 
+    // Time complexity in worst case O(N)
+    // Space complexity O(N)
     private int count;
     public int rangeSumBST(TreeNode root, int low, int high) {
         if(root == null) return 0;

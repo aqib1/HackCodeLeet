@@ -2,6 +2,8 @@ import java.util.Objects;
 
 public class IsValidBST {
 
+    // Time complexity O(N) where N is number of nodes
+    // Space complexity O(N) due to recursion
     public boolean validateBT(TreeNode node) {
         return validateBT(node, Long.MIN_VALUE, Long.MAX_VALUE);
     }
