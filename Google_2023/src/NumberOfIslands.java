@@ -2,6 +2,9 @@ import java.util.Objects;
 
 public class NumberOfIslands {
 
+    // Time complexity O(N x M) where N is number of rows and M is number of columns
+    // Space complexity O(N x M) {Recursion}
+
     private static final int []DIRECTIONS = new int [] {0, -1, 0, 1, 0};
     public int numIslands(char[][] grid) {
         if(Objects.isNull(grid) || grid.length == 0) return 0;
