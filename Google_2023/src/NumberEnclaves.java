@@ -4,6 +4,8 @@ public class NumberEnclaves {
 
     private static final int []DIRECTIONS = {0, -1, 0, 1, 0};
     private int cellCount;
+    // Time complexity O(N x M) where N is number of rows and M is number of columns
+    // Space complexity O(N x M) {Recursion}
     public int numEnclaves(int[][] grid) {
         if(Objects.isNull(grid) || grid.length == 0) return 0;
         int numberOfEnclaves  = 0;
