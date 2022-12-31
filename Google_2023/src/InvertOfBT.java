@@ -4,6 +4,8 @@ import java.util.Queue;
 
 public class InvertOfBT {
     // BFS
+    // Time complexity O(N) where N number of nodes
+    // Space complexity O(N) where N number of nodes
     public TreeNode invertTree(TreeNode root) {
         if(Objects.isNull(root)) return null;
         Queue<TreeNode> fifoQueue = new LinkedList<>();
@@ -21,6 +23,9 @@ public class InvertOfBT {
         return root;
     }
 
+    // DFS
+    // Time complexity O(N) where N number of nodes
+    // Space complexity O(N) where N number of nodes {Recursion}
     public TreeNode dfs(TreeNode root) {
         if(!Objects.isNull(root)) {
             TreeNode left = root.left;

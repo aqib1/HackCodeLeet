@@ -7,6 +7,8 @@ public class FloorAndCeilingBst {
         return max;
     }
 
+    // Time complexity O(N) where N is number of nodes
+    // Space complexity O(N) {Recursion}
     public void findCeil(TreeNode node, int key) {
         if(node == null) return;
 
@@ -25,6 +27,8 @@ public class FloorAndCeilingBst {
         return min;
     }
 
+    // Time complexity O(N) where N is number of nodes
+    // Space complexity O(N) {Recursion}
     private void findFloor(TreeNode node, int key) {
         if(node == null) return;
         if(node.val <= key && node.val >= min) {
