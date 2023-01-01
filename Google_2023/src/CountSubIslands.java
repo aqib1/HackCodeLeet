@@ -4,6 +4,8 @@ public class CountSubIslands {
 
     private static final int []DIRECTIONS = {0, -1, 0, 1, 0};
 
+    // Time complexity O(N x M) where N is number of rows and M is columns
+    // Space complexity O(N x M) where N is number of rows and M is columns
     public int countSubIslands(int[][] grid1, int[][] grid2) {
         if(Objects.isNull(grid1) || Objects.isNull(grid2))
             return 0;
