@@ -1,10 +1,10 @@
-import java.util.stream.IntStream;
-
 interface GuessGame {
     int guess(int num);
 }
 public class GuessNumberHigherOrLower implements GuessGame {
 
+    // Time complexity O(Log N)
+    // Space complexity O(1)
     public int guessNumber(int n) {
         if(n == 1) return 1;
 

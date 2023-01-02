@@ -14,7 +14,7 @@ public class BinarySearch {
 
     public int bs(int start, int end, int target) {
         if(start > end) return -1;
-        int mid = (start + end) / 2;
+        int mid = start + (end - start) / 2;
         if(this.nums[mid] == target) return mid;
 
         if(target > this.nums[mid]) {

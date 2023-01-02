@@ -17,7 +17,7 @@ public class NextGreatestLetter {
         int start = 0, end = letters.length;
 
         while(start < end) {
-            int mid = (start + end) / 2;
+            int mid = start + (end - start) / 2;
             if(letters[mid] <= target) start = mid + 1;
             else end = mid;
         }
