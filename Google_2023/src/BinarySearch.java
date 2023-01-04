@@ -23,4 +23,56 @@ public class BinarySearch {
             return bs(start, mid - 1, target);
         }
     }
+
+    // binary search template I
+    public int binarySearchI(int[] nums, int target) {
+        int start = 0, end = nums.length - 1;
+
+        while(start <= end) {
+            int mid = start + (end - start) / 2;
+            if(nums[mid] == target) return mid;
+            if(target > nums[mid]) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+        return -1;
+    }
+
+    // binary search template II
+    // find first smaller to target
+    public static int binarySearchIIFindFirstSmallerTo(int[] nums, int target) {
+        int start = 0, end = nums.length;
+
+        while(start < end) {
+            int mid = start + (end - start) / 2;
+
+            if(target > nums[mid]) start = mid + 1;
+            else end = mid;
+        }
+        if(start - 1 >= 0 && nums[start] == target) return nums[start - 1];
+
+        return -1;
+    }
+
+    // binary search template II
+    // find first smaller to target
+    public static int binarySearchIIFindFirstGreaterTo(int[] nums, int target) {
+        int low = 0, high = nums.length;
+
+        while(low < high) {
+            int mid = low + (high - low) / 2;
+            if(target > nums[mid]) low = mid + 1;
+            else high = mid;
+        }
+
+        if(high + 1 != nums.length && nums[high] == target) return nums[high + 1];
+        return -1;
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println(binarySearchIIFindFirstSmallerTo(new int [] {1, 2, 3, 4, 5, 6}, 4));
+    }
 }
