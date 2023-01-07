@@ -1,25 +1,25 @@
-import java.util.List;
+import java.util.*;
 
 public class KClosetNumberFromSortedArray {
 
-    public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        int response = binarySearch(arr, k);
-        System.out.println(response);
-        return null;
+    public static List<Integer> findClosestElements(int[] arr, int k, int x) {
+        if(k > arr.length) return null;
+        Queue<Integer> minHeap = new PriorityQueue<>((a, b) -> {
+            if(Math.abs(a - x) == Math.abs(b - x)) {
+                return Integer.compare(a, b);
+            } else return
+            Math.abs(a - x) - Math.abs(b - x);
+        });
+        Arrays.stream(arr).forEach(minHeap::offer);
+        List<Integer> result = new ArrayList<>();
+        for(int i = 0; i < k; i++) {
+            result.add(minHeap.poll());
+        }
+        return result.stream().sorted().toList();
     }
 
-    private int binarySearch(int[] arr, int k) {
-        int start = 0, end = arr.length;
-        while(start < end) {
-            int mid = start + (end - start) / 2;
-
-            if(k > arr[mid]) start = mid + 1;
-            else end = mid;
-        }
-
-        if(arr[start] == k) return start;
-        if(start == 0) return Integer.MIN_VALUE;
-        else return Integer.MAX_VALUE;
+    public static void main(String[] args) {
+        System.out.println(findClosestElements(new int[] {0,0,1,2,3,3,4,7,7,8},  3, 5));
     }
 
 }
