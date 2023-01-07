@@ -39,7 +39,7 @@ public class Cache<K, V> {
 
     // We will use cleanUp method to remove everything from cache
     // which exceed TTL
-    public void cleanUp () {
+    public void clear() {
         long current =  System.currentTimeMillis();
         Set<K> deleteKeys = new HashSet<>();
         cache.forEach((key, value) -> {
