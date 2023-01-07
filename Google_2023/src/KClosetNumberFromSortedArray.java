@@ -4,6 +4,7 @@ public class KClosetNumberFromSortedArray {
 
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         int response = binarySearch(arr, k);
+        System.out.println(response);
         return null;
     }
 
