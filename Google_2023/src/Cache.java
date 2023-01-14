@@ -32,6 +32,10 @@ public class Cache<K, V> {
         return null;
     }
 
+    public boolean containsKey(K key) {
+        return this.cache.containsKey(key);
+    }
+
     public V remove(K key) {
         CacheValue<V> value = cache.remove(key);
         return Objects.isNull(value) ? null : value.value;
@@ -57,5 +61,25 @@ public class Cache<K, V> {
             this.value = value;
             this.lastAccessed = lastAccessed;
         }
+    }
+
+
+    public static void main(String[] args) throws InterruptedException {
+        long start = System.currentTimeMillis();
+        Cache<Integer, String> cache = new Cache<>();
+
+        for(int x=0; x<1667; x++) {
+            cache.put(x, "Val"+x);
+        }
+
+        // Testing 1667 TPS
+        for(int x=0; x<30; x++) {
+            Thread.sleep(1000);
+            for(int i=0; i<1667; i++) {
+                System.out.println(cache.get(i));
+            }
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("Total Time Spent : "+ (end - start) / 1000);
     }
 }

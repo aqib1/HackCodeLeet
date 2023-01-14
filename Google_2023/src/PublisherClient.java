@@ -1,8 +1,9 @@
 import java.util.Deque;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class PublisherClient {
 
-    private final Cache<String, Deque<String>> cache;
+    private final Cache<String, ConcurrentLinkedDeque<String>> cache;
     private final PollingScheduler scheduler;
 
     private PublisherClient() {
@@ -37,6 +38,11 @@ public class PublisherClient {
     public static void main(String[] args) {
        PublisherClient client = PublisherClient.getInstance()
                 .init();
+        for(int x = 0; x < 10; x++) {
+            System.out.println(client.getKunitStream("Cluster1"));
+        }
+        client.scheduler.run();
+        System.out.println("-----------------------");
         for(int x = 0; x < 10; x++) {
             System.out.println(client.getKunitStream("Cluster1"));
         }
