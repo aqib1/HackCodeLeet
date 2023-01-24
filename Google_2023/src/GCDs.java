@@ -29,6 +29,8 @@ public class GCDs {
     }
 
 
+
+    // Time complexity OLog(AB)
     // GCD(a,b) = GCD(a',b) = GCD(b,a')
     public static int GCD(int a, int b) {
         if(a>b) {
@@ -55,7 +57,7 @@ public class GCDs {
     }
 
     public static void main(String[] args) {
-        System.out.println(gcdSort(new int[]{10,5,9,3,15}));
-//        System.out.println(GCD(10, 4));
+//        System.out.println(gcdSort(new int[]{10,5,9,3,15}));
+        System.out.println(GCD(357,234));
     }
 }
