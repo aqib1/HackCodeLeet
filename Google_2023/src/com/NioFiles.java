@@ -1,6 +1,8 @@
 package com;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -29,17 +31,17 @@ public class NioFiles {
         }
     }
     public static void main(String[] args) throws IOException {
-        new newThread();
-        new Sort();
-        List<Integer> li = new ArrayList<>();
-//        li.sort();
+//        new newThread();
+//        new Sort();
+//        List<Integer> li = new ArrayList<>();
+////        li.sort();
 
 
-//        Path path = Path.of("/kpc/snapshot");
-//        if (Files.notExists(path)) {
-//            System.out.println("Setting up snapshots directory");
-//            Files.createDirectories(path);
-//        }
-//        System.out.println("Hi hi");
+        Path path = Path.of("kpc/snapshot/test.txt");
+        if (!Files.isDirectory(path)) {
+            System.out.println("Setting up snapshots directory");
+            Files.createDirectories(path);
+        }
+        System.out.println("Hi hi");
     }
 }

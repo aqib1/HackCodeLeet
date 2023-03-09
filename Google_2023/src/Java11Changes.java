@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -117,7 +118,7 @@ public class Java11Changes {
          * 7- Files updated with Files.readString, Files.writeString and Files.isSameFiles
          * 8- Modularity support from java 9
          * 9- var from jdk 10 enhanced by adding support in Lambda
-         * 10- Patterns updated with method isMatchedPredicate
+         * 10- Patterns updated with method asMatchedPredicate
          * 11- multi-jar support most important which make you able to add code from different versions of java
          * */
 
