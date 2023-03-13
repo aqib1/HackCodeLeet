@@ -1,2 +1,6 @@
-package com.test.io.domains.product;public enum ProductType {
+package com.test.io.domains.product;
+
+public enum ProductType {
+    COUNTED,
+    UNCOUNTED
 }
